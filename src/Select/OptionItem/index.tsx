@@ -6,7 +6,7 @@ export interface IOptionItemProps {
   label: string;
 }
 
-const OptionItem = (props: IOptionItemProps) => {
+export const OptionItem = (props: IOptionItemProps) => {
   const { id, label } = props;
 
   return (
@@ -17,5 +17,3 @@ const OptionItem = (props: IOptionItemProps) => {
     </StyledOptionItem>
   );
 };
-
-export { OptionItem };

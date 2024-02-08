@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { inube } from "@shared/tokens";
+import { inube } from "@inubekit/foundations";
 
 export const StyledOptionItem = styled.li`
   display: flex;

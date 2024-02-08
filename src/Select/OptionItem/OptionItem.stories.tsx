@@ -5,7 +5,7 @@ import { OptionItem, IOptionItemProps } from "./index";
 
 const story = {
   title: "Inputs/Select/OptionItem",
-  component: [OptionItem],
+  component: OptionItem,
   parameters,
   argTypes: props,
 };
