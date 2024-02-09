@@ -24,7 +24,7 @@ export interface ISelectProps {
   onClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Select = (props: ISelectProps) => {
+export const Select = (props: ISelectProps) => {
   const {
     label,
     name,
@@ -111,5 +111,3 @@ const Select = (props: ISelectProps) => {
     />
   );
 };
-
-export { Select };

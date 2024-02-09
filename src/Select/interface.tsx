@@ -82,7 +82,7 @@ const SelectUI = forwardRef((props: ISelectInterfaceProps, ref) => {
   } = props;
 
   return (
-    <StyledContainer fullwidth={fullwidth} disabled={disabled} ref={ref}>
+    <StyledContainer $fullwidth={fullwidth} disabled={disabled} ref={ref}>
       <Stack
         alignItems="center"
         margin="s0 s0 s050 s0"
@@ -111,10 +111,10 @@ const SelectUI = forwardRef((props: ISelectInterfaceProps, ref) => {
 
       <StyledInputContainer
         disabled={disabled}
-        focused={focused}
-        status={status}
+        $focused={focused}
+        $status={status}
         onClick={onClick}
-        readonly={readonly}
+        $readonly={readonly}
       >
         <StyledInput
           autoComplete="off"
@@ -124,11 +124,11 @@ const SelectUI = forwardRef((props: ISelectInterfaceProps, ref) => {
           id={id}
           placeholder={placeholder}
           disabled={disabled}
-          required={required}
-          size={size}
-          status={status}
-          fullwidth={fullwidth}
-          focused={focused}
+          $required={required}
+          $size={size}
+          $status={status}
+          $fullwidth={fullwidth}
+          $focused={focused}
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChange}

@@ -14,7 +14,7 @@ const sizeOptions = {
 export const StyledContainer = styled.div`
   position: relative;
   cursor: ${({ disabled }) => disabled && "not-allowed"};
-  width: ${({ fullwidth }) => (fullwidth ? "100%" : "300px")};
+  width: ${({ $fullwidth }) => ($fullwidth ? "100%" : "300px")};
 
   & > label {
     cursor: ${({ disabled }) => disabled && "not-allowed"};
@@ -33,19 +33,19 @@ export const StyledInputContainer = styled.div`
   background-color: ${({ theme, readonly }) =>
     readonly &&
     (theme?.color?.surface?.light?.clear || inube.color.surface.light.clear)};
-  border-color: ${({ theme, disabled, readonly, status, focused }) => {
+  border-color: ${({ theme, disabled, $readonly, $status, $focused }) => {
     if (disabled) {
       return (
         (theme?.color?.text?.dark?.disabled || inube.color.text.dark.disabled) +
         "; pointer-events: none; opacity: 0.5;"
       );
     }
-    if (focused && !readonly) {
+    if ($focused && !$readonly) {
       return (
         theme?.color?.text?.primary?.hover || inube.color.text.primary.hover
       );
     }
-    if (status === "invalid" && !readonly) {
+    if ($status === "invalid" && !$readonly) {
       return (
         theme?.color?.text?.error?.regular || inube.color.text.error.regular
       );
@@ -91,7 +91,7 @@ export const StyledInput = styled.input`
     theme?.color?.surface?.light?.clear || inube.color.surface.light.clear};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 
-  ${({ size }) => sizeOptions[size]};
+  ${({ $size }) => sizeOptions[$size]};
 
   ::placeholder {
     color: ${({ theme }) =>
