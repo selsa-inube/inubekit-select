@@ -7,7 +7,10 @@ const story = {
   title: "Inputs/Select",
   component: [Select],
   parameters,
-  argTypes: props,
+  argTypes: {
+    ...props,
+    onchange: { action: "Select" },
+  },
 };
 
 const SelectInForm = (args: ISelectProps) => <InForm {...args} />;

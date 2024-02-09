@@ -6,7 +6,10 @@ const story = {
   title: "Inputs/Select",
   component: [Select],
   parameters,
-  argTypes: props,
+  argTypes: {
+    ...props,
+    onchange: { action: "Select" },
+  },
 };
 
 const Default = (args: ISelectProps) => <SelectController {...args} />;

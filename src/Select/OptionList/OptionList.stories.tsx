@@ -17,15 +17,17 @@ const options = [
 ];
 
 const Default = (args: OptionListProps) => (
-  <OptionList {...args} onClick={action("onClick")}>
-    {options.map((optionItem) => (
-      <OptionItem
-        key={optionItem.id}
-        id={optionItem.id}
-        label={optionItem.label}
-      />
-    ))}
-  </OptionList>
+  <div style={{ position: "relative" }}>
+    <OptionList {...args} onClick={action("onClick")}>
+      {options.map((optionItem) => (
+        <OptionItem
+          key={optionItem.id}
+          id={optionItem.id}
+          label={optionItem.label}
+        />
+      ))}
+    </OptionList>
+  </div>
 );
 
 export default story;
