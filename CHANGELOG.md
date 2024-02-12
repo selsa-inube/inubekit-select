@@ -1,3 +1,20 @@
+# v1.0.1 (Mon Feb 12 2024)
+
+#### 🐛 Bug Fix
+
+- Adjust publish Select inubekit repo [#1](https://github.com/selsa-inube/inubekit-select/pull/1) ([@Andresbl123](https://github.com/Andresbl123))
+
+#### ⚠️ Pushed to `main`
+
+- feat: add OptionList and OptionItem to Select component (carlos3k11@gmail.com)
+
+#### Authors: 2
+
+- Andres ([@Andresbl123](https://github.com/Andresbl123))
+- Andres Babativa (carlos3k11@gmail.com)
+
+---
+
 # v0.0.2 (Thu Feb 08 2024)
 
 #### ⚠️ Pushed to `main`
