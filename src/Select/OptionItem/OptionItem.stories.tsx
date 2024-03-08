@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { presente } from "@inubekit/foundations";
 import { props, parameters } from "./props";
-import { OptionItem, IOptionItemProps } from "./index";
+import { OptionItem, IOptionItem } from "./index";
 
 const story = {
   title: "Inputs/Select/OptionItem",
@@ -10,7 +10,7 @@ const story = {
   argTypes: props,
 };
 
-export const Default = (args: IOptionItemProps) => <OptionItem {...args} />;
+const Default = (args: IOptionItem) => <OptionItem {...args} />;
 
 Default.args = {
   id: "Item 1",
@@ -21,7 +21,7 @@ const theme = {
   ...presente,
 };
 
-export const Themed = (args: IOptionItemProps) => (
+const Themed = (args: IOptionItem) => (
   <ThemeProvider theme={theme}>
     <OptionItem {...args} />
   </ThemeProvider>
@@ -31,4 +31,5 @@ Themed.args = {
   ...Default.args,
 };
 
+export { Default, Themed };
 export default story;

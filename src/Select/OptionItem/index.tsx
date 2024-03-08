@@ -1,12 +1,12 @@
 import { Text } from "@inubekit/text";
 import { StyledOptionItem } from "./styles";
 
-export interface IOptionItemProps {
+interface IOptionItem {
   id: string;
   label: string;
 }
 
-export const OptionItem = (props: IOptionItemProps) => {
+const OptionItem = (props: IOptionItem) => {
   const { id, label } = props;
 
   return (
@@ -17,3 +17,6 @@ export const OptionItem = (props: IOptionItemProps) => {
     </StyledOptionItem>
   );
 };
+
+export { OptionItem };
+export type { IOptionItem };

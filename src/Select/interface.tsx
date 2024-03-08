@@ -12,11 +12,11 @@ import { Stack } from "@inubekit/stack";
 
 import { Size } from "./props";
 import { OptionList } from "./OptionList";
-import { ISelectProps } from ".";
+import { ISelect } from ".";
 import { StyledContainer, StyledInputContainer, StyledInput } from "./styles";
 import { OptionItem } from "./OptionItem";
 
-export interface ISelectInterfaceProps extends ISelectProps {
+interface ISelectInterface extends ISelect {
   focused?: boolean;
   displayList: boolean;
   onOptionClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -30,7 +30,7 @@ const getTypo = (size: Size) => {
 };
 
 const Message = (
-  props: Pick<ISelectProps, "disabled" | "status"> & { message?: string },
+  props: Pick<ISelect, "disabled" | "status"> & { message?: string },
 ) => {
   const { disabled, status, message } = props;
 
@@ -57,7 +57,7 @@ const Message = (
   );
 };
 
-const SelectUI = forwardRef((props: ISelectInterfaceProps, ref) => {
+const SelectUI = forwardRef((props: ISelectInterface, ref) => {
   const {
     label,
     name,
@@ -165,3 +165,4 @@ const SelectUI = forwardRef((props: ISelectInterfaceProps, ref) => {
 });
 
 export { SelectUI };
+export type { ISelectInterface };

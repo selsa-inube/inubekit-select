@@ -1,4 +1,4 @@
-import { Select, ISelectProps } from "..";
+import { Select, ISelect } from "..";
 import { SelectController } from "./SelectController";
 import { props, parameters } from "../props";
 
@@ -12,7 +12,7 @@ const story = {
   },
 };
 
-const Default = (args: ISelectProps) => <SelectController {...args} />;
+const Default = (args: ISelect) => <SelectController {...args} />;
 
 Default.args = {
   label: "Label",

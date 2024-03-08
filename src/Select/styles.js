@@ -11,7 +11,7 @@ const sizeOptions = {
   },
 };
 
-export const StyledContainer = styled.div`
+const StyledContainer = styled.div`
   position: relative;
   cursor: ${({ disabled }) => disabled && "not-allowed"};
   width: ${({ $fullwidth }) => ($fullwidth ? "100%" : "300px")};
@@ -21,7 +21,7 @@ export const StyledContainer = styled.div`
   }
 `;
 
-export const StyledInputContainer = styled.div`
+const StyledInputContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -60,7 +60,7 @@ export const StyledInputContainer = styled.div`
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 
-export const StyledInput = styled.input`
+const StyledInput = styled.input`
   outline: none;
   border-radius: 8px;
   padding: 0px 12px 0px 16px;
@@ -115,3 +115,5 @@ export const StyledInput = styled.input`
     -webkit-background-clip: text;
   }
 `;
+
+export { StyledContainer, StyledInputContainer, StyledInput };

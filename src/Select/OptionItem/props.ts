@@ -1,4 +1,4 @@
-export const parameters = {
+const parameters = {
   docs: {
     description: {
       component:
@@ -7,7 +7,7 @@ export const parameters = {
   },
 };
 
-export const props = {
+const props = {
   id: {
     description:
       "uniquely identifies the **Textfield Component**, it will also allow the **label element** to be connected to the **input element** through the htmlFor of the label",
@@ -22,3 +22,5 @@ export const props = {
     description: "The content of the component.",
   },
 };
+
+export { parameters, props };
