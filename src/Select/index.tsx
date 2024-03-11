@@ -91,6 +91,7 @@ const Select = (props: ISelect) => {
   }, [selectRef]);
 
   const onInsideClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDisplayList(false);
     try {
       onChange && onChange(e, name);
     } catch (error) {
@@ -100,10 +101,10 @@ const Select = (props: ISelect) => {
         throw new Error("An unknown error occurred");
       }
     }
-    setDisplayList(false);
   };
 
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDisplayList(!displayList);
     if (readonly) return;
     try {
       onClick && onClick(e);
@@ -114,7 +115,6 @@ const Select = (props: ISelect) => {
         throw new Error("An unknown error occurred");
       }
     }
-    setDisplayList(!displayList);
   };
 
   return (
