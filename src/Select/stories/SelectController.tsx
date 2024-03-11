@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Select, ISelectProps } from "..";
+import { Select, ISelect } from "..";
 
-const SelectController = (props: ISelectProps) => {
+const SelectController = (props: ISelect) => {
   const { value, status = "pending", name } = props;
   const [form, setForm] = useState({ value, status, name });
 

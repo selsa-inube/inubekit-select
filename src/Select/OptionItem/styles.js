@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { inube } from "@inubekit/foundations";
 
-export const StyledOptionItem = styled.li`
+const StyledOptionItem = styled.li`
   display: flex;
   align-items: center;
   align-self: stretch;
@@ -37,3 +37,5 @@ export const StyledOptionItem = styled.li`
     }
   }
 `;
+
+export { StyledOptionItem };

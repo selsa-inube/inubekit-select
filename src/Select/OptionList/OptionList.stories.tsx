@@ -1,5 +1,5 @@
 import { props, parameters } from "./props";
-import { OptionList, OptionListProps } from "./index";
+import { OptionList, IOptionList } from "./index";
 import { OptionItem } from "../OptionItem";
 import { action } from "@storybook/addon-actions";
 
@@ -16,7 +16,7 @@ const options = [
   { id: "3", label: "Item 3" },
 ];
 
-const Default = (args: OptionListProps) => (
+const Default = (args: IOptionList) => (
   <div style={{ position: "relative" }}>
     <OptionList {...args} onClick={action("onClick")}>
       {options.map((optionItem) => (

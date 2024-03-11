@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 
-import { IOptionItemProps } from "./OptionItem";
+import { IOptionItem } from "./OptionItem";
 import { Size, Status } from "./props";
 import { SelectUI } from "./interface";
 
-export interface ISelectProps {
+interface ISelect {
   label?: string;
   name: string;
   id: string;
@@ -17,14 +17,14 @@ export interface ISelectProps {
   message?: string;
   size?: Size;
   fullwidth?: boolean;
-  options: IOptionItemProps[];
+  options: IOptionItem[];
   onChange: (event: React.ChangeEvent<HTMLInputElement>, name: string) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
   onClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Select = (props: ISelectProps) => {
+const Select = (props: ISelect) => {
   const {
     label,
     name,
@@ -52,12 +52,28 @@ export const Select = (props: ISelectProps) => {
 
   const handleFocus = (e: FocusEvent) => {
     setFocused(true);
-    onFocus && onFocus(e);
+    try {
+      onFocus && onFocus(e);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error("An unknown error occurred");
+      }
+    }
   };
 
   const handleBlur = (e: FocusEvent) => {
     setFocused(false);
-    onBlur && onBlur(e);
+    try {
+      onBlur && onBlur(e);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error("An unknown error occurred");
+      }
+    }
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -75,14 +91,30 @@ export const Select = (props: ISelectProps) => {
   }, [selectRef]);
 
   const onInsideClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(e, name);
     setDisplayList(false);
+    try {
+      onChange && onChange(e, name);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error("An unknown error occurred");
+      }
+    }
   };
 
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (readonly) return;
-    onClick && onClick(e);
     setDisplayList(!displayList);
+    if (readonly) return;
+    try {
+      onClick && onClick(e);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error("An unknown error occurred");
+      }
+    }
   };
 
   return (
@@ -111,3 +143,6 @@ export const Select = (props: ISelectProps) => {
     />
   );
 };
+
+export { Select };
+export type { ISelect };

@@ -1,4 +1,4 @@
-import { Select, ISelectProps } from "..";
+import { Select, ISelect } from "..";
 import { InForm } from "./Select.form.Controller";
 
 import { props, parameters } from "../props";
@@ -13,7 +13,7 @@ const story = {
   },
 };
 
-const SelectInForm = (args: ISelectProps) => <InForm {...args} />;
+const SelectInForm = (args: ISelect) => <InForm {...args} />;
 
 SelectInForm.args = {
   label: "Select",

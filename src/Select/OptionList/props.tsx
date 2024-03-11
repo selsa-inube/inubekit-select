@@ -1,4 +1,4 @@
-export const parameters = {
+const parameters = {
   docs: {
     description: {
       component: "container of the options to be used in component Select",
@@ -6,7 +6,7 @@ export const parameters = {
   },
 };
 
-export const props = {
+const props = {
   options: {
     description:
       "(array): shall be designed to accept an array of objects with a predetermined structure.",
@@ -27,3 +27,5 @@ export const props = {
       "(function): shall determine the behaviour of the click event to send the value of the chosen options.",
   },
 };
+
+export { parameters, props };

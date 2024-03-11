@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Button } from "@inubekit/button";
 
-import { Select, ISelectProps } from "..";
+import { Select, ISelect } from "..";
 import { StyledForm } from "./styles";
 
-export const InForm = (props: ISelectProps) => {
+const InForm = (props: ISelect) => {
   const { value, status = "pending", required } = props;
   const [form, setForm] = useState({ value, status });
 
@@ -55,3 +55,5 @@ export const InForm = (props: ISelectProps) => {
     </StyledForm>
   );
 };
+
+export { InForm };
