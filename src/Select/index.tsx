@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 
 import { IOptionItem } from "./OptionItem";
-import { Size, Status } from "./props";
+import { ISelectSize, ISelectStatus } from "./props";
 import { SelectUI } from "./interface";
 
 interface ISelect {
@@ -13,9 +13,9 @@ interface ISelect {
   readonly?: boolean;
   value: string | number;
   required?: boolean;
-  status?: Status;
+  status?: ISelectStatus;
   message?: string;
-  size?: Size;
+  size?: ISelectSize;
   fullwidth?: boolean;
   options: IOptionItem[];
   onChange: (event: React.ChangeEvent<HTMLInputElement>, name: string) => void;

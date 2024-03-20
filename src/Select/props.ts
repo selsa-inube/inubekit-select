@@ -1,8 +1,8 @@
 const sizes = ["wide", "compact"] as const;
-type Size = (typeof sizes)[number];
+type ISelectSize = (typeof sizes)[number];
 
 const status = ["valid", "invalid", "pending"] as const;
-type Status = (typeof status)[number];
+type ISelectStatus = (typeof status)[number];
 
 const parameters = {
   docs: {
@@ -90,4 +90,4 @@ const props = {
 };
 
 export { parameters, props, status, sizes };
-export type { Size, Status };
+export type { ISelectSize, ISelectStatus };
