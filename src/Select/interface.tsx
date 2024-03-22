@@ -10,7 +10,7 @@ import { Icon } from "@inubekit/icon";
 import { Label } from "@inubekit/label";
 import { Stack } from "@inubekit/stack";
 
-import { Size } from "./props";
+import { ISelectSize } from "./props";
 import { OptionList } from "./OptionList";
 import { ISelect } from ".";
 import { StyledContainer, StyledInputContainer, StyledInput } from "./styles";
@@ -22,7 +22,7 @@ interface ISelectInterface extends ISelect {
   onOptionClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const getTypo = (size: Size) => {
+const getTypo = (size: ISelectSize) => {
   if (size === "compact") {
     return "medium";
   }
