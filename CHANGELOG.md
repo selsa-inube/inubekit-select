@@ -1,3 +1,25 @@
+# v1.3.0 (Fri Mar 22 2024)
+
+#### 🚀 Enhancement
+
+- Adjust and export interfaces [#4](https://github.com/selsa-inube/inubekit-select/pull/4) ([@cmarin001](https://github.com/cmarin001))
+- Implement try..catch in props of type function [#3](https://github.com/selsa-inube/inubekit-select/pull/3) ([@cmarin001](https://github.com/cmarin001))
+
+#### 🐛 Bug Fix
+
+- export `<OptionList /> and `<OptionItem />` component npm package `<Select />` [#2](https://github.com/selsa-inube/inubekit-select/pull/2) ([@Andresbl123](https://github.com/Andresbl123))
+
+#### 🔩 Dependency Updates
+
+- Update inubekit/select to storybook v8 [#5](https://github.com/selsa-inube/inubekit-select/pull/5) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 2
+
+- Andres ([@Andresbl123](https://github.com/Andresbl123))
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.0.1 (Mon Feb 12 2024)
 
 #### 🐛 Bug Fix
