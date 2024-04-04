@@ -9,6 +9,7 @@ import { Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
 import { Label } from "@inubekit/label";
 import { Stack } from "@inubekit/stack";
+import { inube } from "@inubekit/foundations";
 
 import { ISelectSize } from "./props";
 import { OptionList } from "./OptionList";
@@ -37,7 +38,11 @@ const Message = (
   return status !== "pending" ? (
     <Stack alignItems="center" gap="4px" margin="s050 s0 s0 s200">
       <Icon
-        appearance={status === "invalid" ? "error" : "success"}
+        appearance={
+          status === "invalid"
+            ? ("error" as keyof typeof inube.text)
+            : ("success" as keyof typeof inube.text)
+        }
         disabled={disabled}
         icon={status === "invalid" ? <MdOutlineError /> : <MdCheckCircle />}
         size="14px"
