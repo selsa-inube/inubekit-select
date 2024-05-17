@@ -1,3 +1,15 @@
+# v2.0.0 (Fri May 17 2024)
+
+#### 💥 Breaking Change
+
+- Adjusment in order to use the new token structure [#9](https://github.com/selsa-inube/inubekit-select/pull/9) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.4.0 (Tue Apr 30 2024)
 
 #### 🚀 Enhancement
