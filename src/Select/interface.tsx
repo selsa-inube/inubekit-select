@@ -50,7 +50,7 @@ const Message = (
       <Text
         type="body"
         size="small"
-        appearance={status === "invalid" ? "error" : "success"}
+        appearance={status === "invalid" ? "danger" : "success"}
         disabled={disabled}
         textAlign="start"
       >

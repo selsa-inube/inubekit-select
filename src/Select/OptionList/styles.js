@@ -11,7 +11,8 @@ const StyledOptionList = styled.ul`
   border-radius: 4px;
   background: ${({ theme }) => {
     return (
-      theme?.color?.surface?.light?.clear || inube.color.surface.light.clear
+      theme?.input?.background?.color?.regular ||
+      inube.input.background.color.regular
     );
   }};
   box-shadow:

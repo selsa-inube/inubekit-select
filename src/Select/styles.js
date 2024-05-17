@@ -32,27 +32,27 @@ const StyledInputContainer = styled.div`
   border-style: solid;
   background-color: ${({ theme, readonly }) =>
     readonly &&
-    (theme?.color?.surface?.light?.clear || inube.color.surface.light.clear)};
+    (theme?.input?.border?.color?.regular || inube.input.border.color.regular)};
   border-color: ${({ theme, disabled, $readonly, $status, $focused }) => {
     if (disabled) {
       return (
-        (theme?.color?.text?.dark?.disabled || inube.color.text.dark.disabled) +
+        (theme?.input?.border?.color?.disabled ||
+          inube.input.border.color.disabled) +
         "; pointer-events: none; opacity: 0.5;"
       );
     }
     if ($focused && !$readonly) {
       return (
-        theme?.color?.text?.primary?.hover || inube.color.text.primary.hover
+        theme?.input?.border?.color?.focus || inube.input.border.color.focus
       );
     }
     if ($status === "invalid" && !$readonly) {
       return (
-        theme?.color?.text?.error?.regular || inube.color.text.error.regular
+        theme?.input?.border?.color?.invalid || inube.input.border.color.invalid
       );
     }
     return (
-      theme?.color?.stroke?.divider?.regular ||
-      inube.color.stroke.divider.regular
+      theme?.input?.border?.color?.regular || inube.input.border.color.regular
     );
   }};
 
@@ -82,20 +82,25 @@ const StyledInput = styled.input`
   color: ${({ theme, disabled }) => {
     if (disabled) {
       return (
-        theme?.color?.text?.dark?.disabled || inube.color.text.dark.disabled
+        theme?.input?.content?.color?.disabled ||
+        inube.input.content.color.disabled
       );
     }
-    return theme?.color?.text?.dark?.regular || inube.color.text.dark.regular;
+    return (
+      theme?.input?.content?.color?.regular || inube.input.content.color.regular
+    );
   }};
   background-color: ${({ theme }) =>
-    theme?.color?.surface?.light?.clear || inube.color.surface.light.clear};
+    theme?.input?.background?.color?.regular ||
+    inube.input.background.color.regular};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 
   ${({ $size }) => sizeOptions[$size]};
 
   ::placeholder {
     color: ${({ theme }) =>
-      theme?.color?.text?.dark?.disabled || inube.color.text.dark.disabled};
+      theme?.input?.placeholder?.color?.regular ||
+      inube.input.placeholder.color.regular};
   }
 
   &:focus {
