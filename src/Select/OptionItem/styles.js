@@ -6,34 +6,34 @@ const StyledOptionItem = styled.li`
   display: flex;
   align-items: center;
   align-self: stretch;
-  min-height: ${inube.spacing.s500};
-  border-left: ${inube.spacing.s050} solid transparent;
-  padding: ${() =>
-    `${inube.spacing.s050} ${inube.spacing.s200} ${inube.spacing.s050} ${inube.spacing.s150}`};
+  min-height: 40px;
+  border-left: 4px solid transparent;
+  padding: 4px 16px 4px 12px;
   cursor: pointer;
 
-  border-left-width: ${inube.spacing.s050};
+  border-left-width: 4px;
   border-left-style: solid;
   border-left-color: ${({ theme }) =>
-    theme?.color?.stroke?.light?.regular || inube.color.stroke.light.regular};
+    theme?.input?.border?.color?.regular || inube.input.border.color.regular};
 
   p {
     color: ${({ theme }) =>
-      theme?.color?.text?.dark?.regular || inube.color.text.dark.regular};
+      theme?.input?.content?.color?.regular ||
+      inube.input.content.color.regular};
   }
 
   &:hover {
     border-left-color: ${({ theme }) =>
-      theme?.color?.stroke?.primary?.regular ||
-      inube.color.stroke.primary.regular};
+      theme?.input?.border?.color?.focus || inube.input.border.color.focus};
 
     background-color: ${({ theme }) =>
-      theme?.color?.surface?.gray?.hover || inube.color.surface.gray.hover};
+      theme?.input?.background?.color?.regular ||
+      inube.input.background.color.regular};
 
     p {
       color: ${({ theme }) =>
-        theme?.color?.text?.primary?.regular ||
-        inube.color.text.primary.regular};
+        theme?.input?.content?.color?.regular ||
+        inube.input.content.color.regular};
     }
   }
 `;
