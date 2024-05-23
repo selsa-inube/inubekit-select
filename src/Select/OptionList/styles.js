@@ -4,6 +4,7 @@ import { inube } from "@inubekit/foundations";
 const StyledOptionList = styled.ul`
   display: flex;
   flex-direction: column;
+  width: -moz-available;
   width: -webkit-fill-available;
   padding: 4px 0px;
   position: absolute;
