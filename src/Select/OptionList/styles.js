@@ -12,13 +12,21 @@ const StyledOptionList = styled.ul`
   border-radius: 4px;
   background: ${({ theme }) => {
     return (
-      theme?.input?.background?.color?.regular ||
-      inube.input.background.color.regular
+      theme?.input?.optionList?.background?.expanded ||
+      inube.input.optionList.background.expanded
     );
   }};
   box-shadow:
     0px 1px 2px rgba(0, 0, 0, 0.3),
     0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  & > li:hover {
+    background: ${({ theme }) => {
+      return (
+        theme?.input?.optionList?.background?.selected ||
+        inube.input.optionList.background.selected
+      );
+    }};
+  }
 `;
 
 export { StyledOptionList };
