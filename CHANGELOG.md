@@ -1,3 +1,15 @@
+# v2.2.0 (Thu May 23 2024)
+
+#### 🚀 Enhancement
+
+- Update `<Select/>` in order to use the background tokens for `<OptionList/>` [#11](https://github.com/selsa-inube/inubekit-select/pull/11) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v2.1.0 (Thu May 23 2024)
 
 #### 🚀 Enhancement
