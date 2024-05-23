@@ -1,3 +1,15 @@
+# v2.1.0 (Thu May 23 2024)
+
+#### 🚀 Enhancement
+
+- Review the behavior of the select component and adjust it according to the Figma documentation [#10](https://github.com/selsa-inube/inubekit-select/pull/10) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v2.0.0 (Fri May 17 2024)
 
 #### 💥 Breaking Change
