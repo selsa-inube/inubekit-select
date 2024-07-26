@@ -41,6 +41,9 @@ const props = {
     description: "Order of the months displayed (ascending or descending).",
     defaultValue: "asc",
   },
+  placeholder: {
+    description: "text to display in the text field whenever it is empty",
+  },
   value: {
     control: { type: "text" },
     description: "The currently selected month value.",

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Select } from "../Select";
+import { IMonthpickerOrder } from "./props";
 
 interface IMonthpicker {
   start?: number;
   end?: number;
   locales?: string;
-  order?: "asc" | "desc";
+  order?: IMonthpickerOrder;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, value: string) => void;
   placeholder?: string;
   value?: string;
