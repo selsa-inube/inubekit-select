@@ -1,3 +1,15 @@
+# v3.0.0 (Fri Jul 26 2024)
+
+#### 💥 Breaking Change
+
+- Added `<Monthpicker />` Component to Project [#15](https://github.com/selsa-inube/inubekit-select/pull/15) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v2.5.0 (Tue Jul 09 2024)
 
 #### 🚀 Enhancement
