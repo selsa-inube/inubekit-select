@@ -96,7 +96,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
       >
         {label && (
           <Label
-            htmlFor={id}
+            htmlFor={id!}
             disabled={disabled}
             focused={!readonly && focused}
             invalid={status === "invalid" && !readonly}

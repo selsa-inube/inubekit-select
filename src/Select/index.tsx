@@ -6,12 +6,12 @@ import { SelectUI } from "./interface";
 
 interface ISelect {
   label?: string;
-  name: string;
-  id: string;
+  name?: string;
+  id?: string;
   placeholder?: string;
   disabled?: boolean;
   readonly?: boolean;
-  value: string | number;
+  value?: string | number;
   required?: boolean;
   status?: ISelectStatus;
   message?: string;
@@ -93,7 +93,7 @@ const Select = (props: ISelect) => {
   const onInsideClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDisplayList(false);
     try {
-      onChange && onChange(e, name);
+      onChange && onChange(e, name!);
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);
