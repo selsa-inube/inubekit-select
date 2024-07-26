@@ -1,3 +1,15 @@
+# v4.0.0 (Fri Jul 26 2024)
+
+#### 💥 Breaking Change
+
+- Create component `<Yearpicker />` [#16](https://github.com/selsa-inube/inubekit-select/pull/16) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v3.0.0 (Fri Jul 26 2024)
 
 #### 💥 Breaking Change
