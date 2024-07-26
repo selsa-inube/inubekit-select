@@ -1,3 +1,15 @@
+# v5.0.0 (Fri Jul 26 2024)
+
+#### 💥 Breaking Change
+
+- Remove components due to that components belong to other repos [#17](https://github.com/selsa-inube/inubekit-select/pull/17) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v4.0.0 (Fri Jul 26 2024)
 
 #### 💥 Breaking Change
