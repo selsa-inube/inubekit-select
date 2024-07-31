@@ -1,3 +1,15 @@
+# v5.0.1 (Wed Jul 31 2024)
+
+#### ⚠️ Pushed to `main`
+
+- Update interface.tsx ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v5.0.0 (Fri Jul 26 2024)
 
 #### 💥 Breaking Change
