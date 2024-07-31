@@ -36,11 +36,11 @@ const Message = (
   const { disabled, status, message } = props;
 
   return status !== "pending" ? (
-    <Stack alignItems="center" gap="4px" margin="s050 s0 s0 s200">
+    <Stack alignItems="center" gap="4px" margin="4px 0 0 16px">
       <Icon
         appearance={
           status === "invalid"
-            ? ("error" as keyof typeof inube.text)
+            ? ("danger" as keyof typeof inube.text)
             : ("success" as keyof typeof inube.text)
         }
         disabled={disabled}
@@ -90,8 +90,8 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
     <StyledContainer $fullwidth={fullwidth} disabled={disabled} ref={ref}>
       <Stack
         alignItems="center"
-        margin="s0 s0 s050 s0"
-        padding="s0 s0 s0 s200"
+        margin="0 0 4px 0"
+        padding="0 0 0 16px"
         gap="2px"
       >
         {label && (
