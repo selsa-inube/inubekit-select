@@ -30,8 +30,8 @@ const StyledInputContainer = styled.div`
   user-select: none;
   border-width: 1px;
   border-style: solid;
-  background-color: ${({ theme, readonly }) =>
-    readonly &&
+  background-color: ${({ theme, $readonly }) =>
+    $readonly &&
     (theme?.input?.border?.color?.regular || inube.input.border.color.regular)};
   border-color: ${({ theme, disabled, $readonly, $status, $focused }) => {
     if (disabled) {
