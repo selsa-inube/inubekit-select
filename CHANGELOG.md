@@ -1,3 +1,15 @@
+# v5.0.3 (Thu Aug 01 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjustment in order to avoid the stack be rendered if the label doesn't exist ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v5.0.2 (Thu Aug 01 2024)
 
 #### ⚠️ Pushed to `main`
