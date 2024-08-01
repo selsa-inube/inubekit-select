@@ -69,8 +69,7 @@ const StyledInput = styled.input`
     theme?.typography?.body?.large?.font || inube.typography.body.large.font};
   font-size: ${({ theme }) =>
     theme?.typography?.body?.large?.font || inube.typography.body.large.size};
-  font-weight: ${({ theme }) =>
-    theme?.typography?.body?.large?.font || inube.typography.body.large.weight};
+  font-weight: 400;
   line-height: ${({ theme }) =>
     theme?.typography?.body?.large?.font ||
     inube.typography.body.large.lineHeight};

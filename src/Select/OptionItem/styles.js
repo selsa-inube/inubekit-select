@@ -16,7 +16,7 @@ const StyledOptionItem = styled.li`
   border-left-color: ${({ theme }) =>
     theme?.input?.border?.color?.regular || inube.input.border.color.regular};
 
-  p {
+  & > p {
     color: ${({ theme }) =>
       theme?.input?.content?.color?.regular ||
       inube.input.content.color.regular};
@@ -30,7 +30,7 @@ const StyledOptionItem = styled.li`
       theme?.input?.background?.color?.regular ||
       inube.input.background.color.regular};
 
-    p {
+    & > p {
       color: ${({ theme }) =>
         theme?.input?.content?.color?.regular ||
         inube.input.content.color.regular};
