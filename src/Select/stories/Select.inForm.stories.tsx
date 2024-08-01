@@ -23,7 +23,6 @@ SelectInForm.args = {
   value: "",
   required: true,
   disabled: false,
-  readonly: false,
   options: [
     { id: "1", label: "Item 1", disabled: false },
     { id: "2", label: "123", disabled: false },
