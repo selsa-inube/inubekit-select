@@ -1,3 +1,15 @@
+# v5.0.2 (Thu Aug 01 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: update styles in order to use readonly-prop ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v5.0.1 (Wed Jul 31 2024)
 
 #### ⚠️ Pushed to `main`
