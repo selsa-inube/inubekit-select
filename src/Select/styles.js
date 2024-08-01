@@ -30,10 +30,8 @@ const StyledInputContainer = styled.div`
   user-select: none;
   border-width: 1px;
   border-style: solid;
-  background-color: ${({ theme, $readonly }) =>
-    $readonly &&
-    (theme?.input?.border?.color?.regular || inube.input.border.color.regular)};
-  border-color: ${({ theme, disabled, $readonly, $status, $focused }) => {
+
+  border-color: ${({ theme, disabled, $status, $focused }) => {
     if (disabled) {
       return (
         (theme?.input?.border?.color?.disabled ||
@@ -41,12 +39,12 @@ const StyledInputContainer = styled.div`
         "; pointer-events: none; opacity: 0.5;"
       );
     }
-    if ($focused && !$readonly) {
+    if ($focused) {
       return (
         theme?.input?.border?.color?.focus || inube.input.border.color.focus
       );
     }
-    if ($status === "invalid" && !$readonly) {
+    if ($status === "invalid") {
       return (
         theme?.input?.border?.color?.invalid || inube.input.border.color.invalid
       );
@@ -56,7 +54,7 @@ const StyledInputContainer = styled.div`
     );
   }};
 
-  opacity: ${({ disabled }) => (disabled ? "0.5" : "none")};
+  opacity: ${({ disabled }) => (disabled ? "0.5" : "unset")};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 
