@@ -88,24 +88,24 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
 
   return (
     <StyledContainer $fullwidth={fullwidth} disabled={disabled} ref={ref}>
-      <Stack
+      {label && (<Stack
         alignItems="center"
         margin="0 0 4px 0"
         padding="0 0 0 16px"
         gap="2px"
       >
-        {label && (
-          <Label
-            htmlFor={id!}
-            disabled={disabled}
-            focused={!readonly && focused}
-            invalid={status === "invalid" && !readonly}
-            size={getTypo(size!)}
-            margin="0px 0px 0px 2px"
-          >
-            {label}
-          </Label>
-        )}
+
+        <Label
+          htmlFor={id!}
+          disabled={disabled}
+          focused={!readonly && focused}
+          invalid={status === "invalid" && !readonly}
+          size={getTypo(size!)}
+          margin="0px 0px 0px 2px"
+        >
+          {label}
+        </Label>
+
 
         {required && !disabled && (
           <Text type="body" size="small" appearance="dark" textAlign="start">
@@ -113,7 +113,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           </Text>
         )}
       </Stack>
-
+      )}
       <StyledInputContainer
         disabled={disabled}
         $focused={focused}
