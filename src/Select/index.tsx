@@ -10,7 +10,6 @@ interface ISelect {
   id?: string;
   placeholder?: string;
   disabled?: boolean;
-  readonly?: boolean;
   value?: string | number;
   required?: boolean;
   status?: ISelectStatus;
@@ -31,7 +30,6 @@ const Select = (props: ISelect) => {
     id,
     placeholder,
     disabled = false,
-    readonly = false,
     value,
     required = false,
     status = "pending",
@@ -105,7 +103,7 @@ const Select = (props: ISelect) => {
 
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDisplayList(!displayList);
-    if (readonly) return;
+    if (disabled) return;
     try {
       onClick && onClick(e);
     } catch (error) {
@@ -125,7 +123,6 @@ const Select = (props: ISelect) => {
       id={id}
       placeholder={placeholder}
       disabled={disabled}
-      readonly={readonly}
       value={value}
       required={required}
       size={size}

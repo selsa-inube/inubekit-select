@@ -69,7 +69,6 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
     id,
     placeholder,
     disabled,
-    readonly,
     required,
     status,
     message,
@@ -88,38 +87,36 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
 
   return (
     <StyledContainer $fullwidth={fullwidth} disabled={disabled} ref={ref}>
-      {label && (<Stack
-        alignItems="center"
-        margin="0 0 4px 0"
-        padding="0 0 0 16px"
-        gap="2px"
-      >
-
-        <Label
-          htmlFor={id!}
-          disabled={disabled}
-          focused={!readonly && focused}
-          invalid={status === "invalid" && !readonly}
-          size={getTypo(size!)}
-          margin="0px 0px 0px 2px"
+      {label && (
+        <Stack
+          alignItems="center"
+          margin="0 0 4px 0"
+          padding="0 0 0 16px"
+          gap="2px"
         >
-          {label}
-        </Label>
+          <Label
+            htmlFor={id!}
+            disabled={disabled}
+            focused={focused}
+            invalid={status === "invalid"}
+            size={getTypo(size!)}
+            margin="0px 0px 0px 2px"
+          >
+            {label}
+          </Label>
 
-
-        {required && !disabled && (
-          <Text type="body" size="small" appearance="dark" textAlign="start">
-            (Requerido)
-          </Text>
-        )}
-      </Stack>
+          {required && !disabled && (
+            <Text type="body" size="small" appearance="dark" textAlign="start">
+              (Requerido)
+            </Text>
+          )}
+        </Stack>
       )}
       <StyledInputContainer
         disabled={disabled}
         $focused={focused}
         $status={status}
         onClick={onClick}
-        $readonly={readonly}
       >
         <StyledInput
           autoComplete="off"
@@ -139,19 +136,16 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           onChange={onChange}
           onClick={onClick}
         />
-
-        {!readonly && (
-          <Icon
-            appearance="dark"
-            icon={<MdOutlineArrowDropDown />}
-            size="24px"
-            spacing="narrow"
-            disabled={disabled}
-          />
-        )}
+        <Icon
+          appearance="dark"
+          icon={<MdOutlineArrowDropDown />}
+          size="24px"
+          spacing="narrow"
+          disabled={disabled}
+        />
       </StyledInputContainer>
 
-      {status && !readonly && (
+      {status && (
         <Message disabled={disabled} status={status} message={message} />
       )}
       {displayList && !disabled && (
