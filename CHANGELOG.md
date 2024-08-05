@@ -1,3 +1,15 @@
+# v5.10.0 (Mon Aug 05 2024)
+
+#### 🚀 Enhancement
+
+- Extend `<Select />` Component to Allow Clearing of Selected [#26](https://github.com/selsa-inube/inubekit-select/pull/26) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v5.9.0 (Mon Aug 05 2024)
 
 #### 🚀 Enhancement
