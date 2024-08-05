@@ -23,7 +23,8 @@ const StyledContainer = styled.div`
 
 const StyledInputContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: ${({ $value, disabled }) =>
+    $value && !disabled ? "repeat(3, 1fr)" : "1fr auto"};
   align-items: center;
   box-sizing: border-box;
   border-radius: 8px;
@@ -118,4 +119,17 @@ const StyledInput = styled.input`
   }
 `;
 
-export { StyledContainer, StyledInputContainer, StyledInput };
+const StyledClearIcon = styled.div`
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  & > figure {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+`;
+
+export { StyledContainer, StyledClearIcon, StyledInputContainer, StyledInput };

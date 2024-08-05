@@ -115,6 +115,16 @@ const Select = (props: ISelect) => {
     }
   };
 
+  const handleClear = () => {
+    const event = {
+      target: {
+        value: "",
+        innerText: "",
+      },
+    } as React.ChangeEvent<HTMLInputElement>;
+    onChange(event, name!);
+  };
+
   return (
     <SelectUI
       ref={selectRef}
@@ -137,6 +147,7 @@ const Select = (props: ISelect) => {
       onClick={handleClick}
       displayList={displayList}
       onOptionClick={onInsideClick}
+      handleClear={handleClear}
     />
   );
 };

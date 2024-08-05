@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import {
   MdOutlineError,
+  MdAddCircle,
   MdCheckCircle,
   MdOutlineArrowDropDown,
 } from "react-icons/md";
@@ -14,13 +15,19 @@ import { inube } from "@inubekit/foundations";
 import { ISelectSize } from "./props";
 import { OptionList } from "./OptionList";
 import { ISelect } from ".";
-import { StyledContainer, StyledInputContainer, StyledInput } from "./styles";
+import {
+  StyledContainer,
+  StyledInputContainer,
+  StyledInput,
+  StyledClearIcon,
+} from "./styles";
 import { OptionItem } from "./OptionItem";
 
 interface ISelectInterface extends ISelect {
   focused?: boolean;
   displayList: boolean;
   onOptionClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClear: () => void;
 }
 
 const getTypo = (size: ISelectSize) => {
@@ -83,6 +90,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
     onChange,
     onOptionClick,
     displayList,
+    handleClear,
   } = props;
 
   return (
@@ -117,6 +125,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
         $focused={focused}
         $status={status}
         onClick={onClick}
+        $value={value}
       >
         <StyledInput
           autoComplete="off"
@@ -136,6 +145,17 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           onChange={onChange}
           onClick={onClick}
         />
+        {value && !disabled && (
+          <StyledClearIcon>
+            <Icon
+              appearance="gray"
+              icon={<MdAddCircle />}
+              size="20px"
+              onClick={handleClear}
+            />
+          </StyledClearIcon>
+        )}
+
         <Icon
           appearance="dark"
           icon={<MdOutlineArrowDropDown />}
