@@ -126,6 +126,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
         $status={status}
         onClick={onClick}
         $value={value}
+        $size={size}
       >
         <StyledInput
           autoComplete="off"
@@ -145,24 +146,26 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           onChange={onChange}
           onClick={onClick}
         />
-        {value && !disabled && (
-          <StyledClearIcon>
-            <Icon
-              appearance="gray"
-              icon={<MdAddCircle />}
-              size="20px"
-              onClick={handleClear}
-            />
-          </StyledClearIcon>
-        )}
+        <Stack direction="row" gap="8px">
+          {value && !disabled && (
+            <StyledClearIcon>
+              <Icon
+                appearance="gray"
+                icon={<MdAddCircle />}
+                size="20px"
+                onClick={handleClear}
+              />
+            </StyledClearIcon>
+          )}
 
-        <Icon
-          appearance="dark"
-          icon={<MdOutlineArrowDropDown />}
-          size="24px"
-          spacing="narrow"
-          disabled={disabled}
-        />
+          <Icon
+            appearance="dark"
+            icon={<MdOutlineArrowDropDown />}
+            size="24px"
+            spacing="narrow"
+            disabled={disabled}
+          />
+        </Stack>
       </StyledInputContainer>
 
       {status && (

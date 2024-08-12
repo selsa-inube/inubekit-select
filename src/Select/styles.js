@@ -2,15 +2,6 @@ import styled from "styled-components";
 
 import { inube } from "@inubekit/foundations";
 
-const sizeOptions = {
-  compact: {
-    height: "40px",
-  },
-  wide: {
-    height: "48px",
-  },
-};
-
 const StyledContainer = styled.div`
   position: relative;
   cursor: ${({ disabled }) => disabled && "not-allowed"};
@@ -23,8 +14,9 @@ const StyledContainer = styled.div`
 
 const StyledInputContainer = styled.div`
   display: grid;
-  grid-template-columns: ${({ $value, disabled }) =>
-    $value && !disabled ? "repeat(3, 1fr)" : "1fr auto"};
+  padding: ${({ $size }) => ($size === "wide" ? "12px 16px" : "8px 16px")};
+  grid-auto-flow: column;
+  grid-template-columns: 1fr auto;
   align-items: center;
   box-sizing: border-box;
   border-radius: 8px;
@@ -61,8 +53,9 @@ const StyledInputContainer = styled.div`
 
 const StyledInput = styled.input`
   outline: none;
+  padding: 0;
+  margin: 0;
   border-radius: 8px;
-  padding: 0px 12px 0px 16px;
   border-width: none;
   border-style: none;
   border-color: none;
@@ -92,8 +85,6 @@ const StyledInput = styled.input`
     theme?.input?.background?.color?.regular ||
     inube.input.background.color.regular};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-
-  ${({ $size }) => sizeOptions[$size]};
 
   ::placeholder {
     color: ${({ theme }) =>
