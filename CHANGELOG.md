@@ -1,3 +1,15 @@
+# v5.10.1 (Mon Aug 12 2024)
+
+#### 🐛 Bug Fix
+
+- fix: layout when select in fullwidth mode [#27](https://github.com/selsa-inube/inubekit-select/pull/27) ([@wfercanas](https://github.com/wfercanas))
+
+#### Authors: 1
+
+- Fernando Cañas ([@wfercanas](https://github.com/wfercanas))
+
+---
+
 # v5.10.0 (Mon Aug 05 2024)
 
 #### 🚀 Enhancement
