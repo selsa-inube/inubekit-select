@@ -14,7 +14,7 @@ import { inube } from "@inubekit/foundations";
 
 import { ISelectSize } from "./props";
 import { OptionList } from "./OptionList";
-import { ISelect } from ".";
+import { IOption, ISelect } from ".";
 import {
   StyledContainer,
   StyledInputContainer,
@@ -36,6 +36,14 @@ const getTypo = (size: ISelectSize) => {
   }
   return "large";
 };
+
+function getOptionLabel(options: IOption[], value: string) {
+  const option = options.find((option) => option.value === value);
+  if (option) {
+    return option.label;
+  }
+  return "";
+}
 
 const Message = (
   props: Pick<ISelect, "disabled" | "status"> & { message?: string },
@@ -130,8 +138,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
       >
         <StyledInput
           autoComplete="off"
-          readOnly
-          value={value}
+          value={getOptionLabel(options, value)}
           name={name}
           id={id}
           placeholder={placeholder}
@@ -145,6 +152,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           onBlur={onBlur}
           onChange={onChange}
           onClick={onClick}
+          readOnly
         />
         <Stack direction="row" gap="8px">
           {value && !disabled && (
