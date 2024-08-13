@@ -1,9 +1,12 @@
+import { IOptions } from "..";
+
 import { Text } from "@inubekit/text";
+
 import { StyledOptionItem } from "./styles";
 
 interface IOptionItem {
-  id: string;
-  label: string;
+  id: IOptions["id"];
+  label: IOptions["label"];
 }
 
 const OptionItem = (props: IOptionItem) => {
