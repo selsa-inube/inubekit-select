@@ -26,7 +26,7 @@ import { OptionItem } from "./OptionItem";
 interface ISelectInterface extends ISelect {
   focused?: boolean;
   displayList: boolean;
-  onOptionClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onOptionClick: (value: string) => void;
   handleClear: () => void;
 }
 
@@ -172,7 +172,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
         <Message disabled={disabled} status={status} message={message} />
       )}
       {displayList && !disabled && (
-        <OptionList onClick={onOptionClick!}>
+        <OptionList onOptionClick={onOptionClick} options={options}>
           {options.map((optionItem) => (
             <OptionItem
               key={optionItem.id}
