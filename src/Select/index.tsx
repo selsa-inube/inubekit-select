@@ -9,24 +9,23 @@ interface ISelect {
   id?: string;
   placeholder?: string;
   disabled?: boolean;
-  value: string | number;
+  value: string;
   required?: boolean;
   status?: ISelectStatus;
   message?: string;
   size?: ISelectSize;
   fullwidth?: boolean;
-  options: IOptions[];
+  options: IOption[];
   onChange: (name: string, value: string) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
   onClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-interface IOptions {
+interface IOption {
   id: string;
   label: string;
   value: string;
-  disabled?: boolean;
 }
 
 const Select = (props: ISelect) => {
@@ -142,4 +141,4 @@ const Select = (props: ISelect) => {
 };
 
 export { Select };
-export type { ISelect, IOptions };
+export type { ISelect, IOption };
