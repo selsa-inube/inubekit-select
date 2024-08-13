@@ -1,18 +1,16 @@
-import { IOptions } from "..";
+import { IOption } from "..";
 import { StyledOptionList } from "./styles";
 
 interface IOptionList {
   children: JSX.Element[];
   onOptionClick: (value: string) => void;
-  options: IOptions[];
+  options: IOption[];
 }
 
 const OptionList = (props: IOptionList) => {
   const { children, onOptionClick, options } = props;
 
   const interceptOnClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event);
-
     try {
       const optionClicked = options.find(
         (option) =>
