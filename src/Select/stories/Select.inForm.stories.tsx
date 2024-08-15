@@ -16,17 +16,22 @@ const story = {
 const SelectInForm = (args: ISelect) => <InForm {...args} />;
 
 SelectInForm.args = {
-  label: "Select",
-  name: "select",
-  id: "select",
-  placeholder: "Select",
+  label: "Country",
+  name: "country",
+  id: "country",
+  placeholder: "Select your country",
   value: "",
   required: true,
   disabled: false,
+  invalid: false,
   options: [
-    { id: "1", label: "Item 1", disabled: false },
-    { id: "2", label: "123", disabled: false },
-    { id: "3", label: "Item", disabled: false },
+    { id: "col", label: "Colombia", value: "colombia" },
+    {
+      id: "usa",
+      label: "United States of America",
+      value: "united-states-of-america",
+    },
+    { id: "per", label: "Peru", value: "peru" },
   ],
   size: "compact",
   fullwidth: false,
