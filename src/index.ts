@@ -4,4 +4,4 @@ export { OptionItem } from "./Select/OptionItem";
 export type { ISelect } from "./Select";
 export type { IOptionList } from "./Select/OptionList";
 export type { IOptionItem } from "./Select/OptionItem";
-export type { ISelectSize, ISelectStatus } from "./Select/props";
+export type { ISelectSize } from "./Select/props";
