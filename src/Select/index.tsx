@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-import { ISelectSize, ISelectStatus } from "./props";
+import { ISelectSize } from "./props";
 import { SelectUI } from "./interface";
 
 interface ISelect {
@@ -11,7 +11,7 @@ interface ISelect {
   disabled?: boolean;
   value: string;
   required?: boolean;
-  status?: ISelectStatus;
+  invalid?: boolean;
   message?: string;
   size?: ISelectSize;
   fullwidth?: boolean;
@@ -37,7 +37,7 @@ const Select = (props: ISelect) => {
     disabled = false,
     value,
     required = false,
-    status = "pending",
+    invalid = false,
     message,
     size = "wide",
     fullwidth = false,
@@ -91,7 +91,7 @@ const Select = (props: ISelect) => {
     try {
       onChange && onChange(name, value);
     } catch (error) {
-      console.error(`Error in when changing value using callback. ${error}`);
+      console.error(`Error when changing value using callback. ${error}`);
     }
   }
 
@@ -124,7 +124,7 @@ const Select = (props: ISelect) => {
       value={value}
       required={required}
       size={size}
-      status={status}
+      invalid={invalid}
       message={message}
       fullwidth={fullwidth}
       focused={focused}

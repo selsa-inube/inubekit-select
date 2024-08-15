@@ -2,7 +2,6 @@ import { forwardRef } from "react";
 import {
   MdOutlineError,
   MdAddCircle,
-  MdCheckCircle,
   MdOutlineArrowDropDown,
 } from "react-icons/md";
 
@@ -10,7 +9,6 @@ import { Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
 import { Label } from "@inubekit/label";
 import { Stack } from "@inubekit/stack";
-import { inube } from "@inubekit/foundations";
 
 import { ISelectSize } from "./props";
 import { OptionList } from "./OptionList";
@@ -45,35 +43,20 @@ function getOptionLabel(options: IOption[], value: string) {
   return "";
 }
 
-const Message = (
-  props: Pick<ISelect, "disabled" | "status"> & { message?: string },
-) => {
-  const { disabled, status, message } = props;
+interface IMessage {
+  message: ISelect["message"];
+}
 
-  return status !== "pending" ? (
+const Message = (props: IMessage) => {
+  const { message } = props;
+
+  return (
     <Stack alignItems="center" gap="4px" margin="4px 0 0 16px">
-      <Icon
-        appearance={
-          status === "invalid"
-            ? ("danger" as keyof typeof inube.text)
-            : ("success" as keyof typeof inube.text)
-        }
-        disabled={disabled}
-        icon={status === "invalid" ? <MdOutlineError /> : <MdCheckCircle />}
-        size="14px"
-      />
-      <Text
-        type="body"
-        size="small"
-        appearance={status === "invalid" ? "danger" : "success"}
-        disabled={disabled}
-        textAlign="start"
-      >
-        {message && `${message}`}
+      <Icon appearance="danger" icon={<MdOutlineError />} size="14px" />
+      <Text type="body" size="small" appearance="danger" textAlign="start">
+        {message}
       </Text>
     </Stack>
-  ) : (
-    <></>
   );
 };
 
@@ -85,7 +68,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
     placeholder,
     disabled,
     required,
-    status,
+    invalid,
     message,
     size,
     value,
@@ -143,7 +126,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           id={id}
           placeholder={placeholder}
           disabled={disabled}
-          $required={required}
+          required={required}
           $size={size}
           $status={status}
           $fullwidth={fullwidth}
@@ -152,7 +135,6 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           onBlur={onBlur}
           onChange={onChange}
           onClick={onClick}
-          readOnly
         />
         <Stack direction="row" gap="8px">
           {value && !disabled && (
@@ -176,9 +158,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
         </Stack>
       </StyledInputContainer>
 
-      {status && (
-        <Message disabled={disabled} status={status} message={message} />
-      )}
+      {invalid && <Message message={message} />}
       {displayList && !disabled && (
         <OptionList onOptionClick={onOptionClick} options={options}>
           {options.map((optionItem) => (
