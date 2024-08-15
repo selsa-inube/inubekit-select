@@ -24,7 +24,7 @@ const StyledInputContainer = styled.div`
   border-width: 1px;
   border-style: solid;
 
-  border-color: ${({ theme, disabled, $status, $focused }) => {
+  border-color: ${({ theme, disabled, $invalid, $focused }) => {
     if (disabled) {
       return (
         (theme?.input?.border?.color?.disabled ||
@@ -37,7 +37,7 @@ const StyledInputContainer = styled.div`
         theme?.input?.border?.color?.focus || inube.input.border.color.focus
       );
     }
-    if ($status === "invalid") {
+    if ($invalid) {
       return (
         theme?.input?.border?.color?.invalid || inube.input.border.color.invalid
       );
@@ -110,17 +110,4 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledClearIcon = styled.div`
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  & > figure {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-`;
-
-export { StyledContainer, StyledClearIcon, StyledInputContainer, StyledInput };
+export { StyledContainer, StyledInputContainer, StyledInput };

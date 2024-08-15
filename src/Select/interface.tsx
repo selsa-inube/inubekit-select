@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 import {
   MdOutlineError,
-  MdAddCircle,
   MdOutlineArrowDropDown,
+  MdOutlineCancel,
 } from "react-icons/md";
 
 import { Text } from "@inubekit/text";
@@ -13,12 +13,7 @@ import { Stack } from "@inubekit/stack";
 import { ISelectSize } from "./props";
 import { OptionList } from "./OptionList";
 import { IOption, ISelect } from ".";
-import {
-  StyledContainer,
-  StyledInputContainer,
-  StyledInput,
-  StyledClearIcon,
-} from "./styles";
+import { StyledContainer, StyledInputContainer, StyledInput } from "./styles";
 import { OptionItem } from "./OptionItem";
 
 interface ISelectInterface extends ISelect {
@@ -91,13 +86,13 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           alignItems="center"
           margin="0 0 4px 0"
           padding="0 0 0 16px"
-          gap="2px"
+          gap="4px"
         >
           <Label
             htmlFor={id!}
             disabled={disabled}
             focused={focused}
-            invalid={status === "invalid"}
+            invalid={invalid}
             size={getTypo(size!)}
             margin="0px 0px 0px 2px"
           >
@@ -114,7 +109,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
       <StyledInputContainer
         disabled={disabled}
         $focused={focused}
-        $status={status}
+        $invalid={invalid}
         onClick={onClick}
         $value={value}
         $size={size}
@@ -128,24 +123,22 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           disabled={disabled}
           required={required}
           $size={size}
-          $status={status}
           $fullwidth={fullwidth}
           $focused={focused}
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChange}
           onClick={onClick}
+          readOnly
         />
-        <Stack direction="row" gap="8px">
+        <Stack direction="row" gap="8px" alignItems="center">
           {value && !disabled && (
-            <StyledClearIcon>
-              <Icon
-                appearance="gray"
-                icon={<MdAddCircle />}
-                size="20px"
-                onClick={handleClear}
-              />
-            </StyledClearIcon>
+            <Icon
+              appearance="gray"
+              icon={<MdOutlineCancel />}
+              size="16px"
+              onClick={handleClear}
+            />
           )}
 
           <Icon
