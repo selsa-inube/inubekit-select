@@ -12,20 +12,26 @@ const story = {
   },
 };
 
+const options = [
+  { id: "col", label: "Colombia", value: "colombia" },
+  {
+    id: "usa",
+    label: "United States of America",
+    value: "united-states-of-america",
+  },
+  { id: "per", label: "Peru", value: "peru" },
+];
+
 const Default = (args: ISelect) => <SelectController {...args} />;
 
 Default.args = {
-  label: "Label",
-  name: "name",
+  label: "Country",
+  name: "country",
   id: "id",
-  placeholder: "Placeholder",
-  value: "Item 2",
+  placeholder: "Select your country",
+  value: "",
   disabled: false,
-  options: [
-    { id: "1", label: "Item 1", disabled: false },
-    { id: "2", label: "123", disabled: false },
-    { id: "3", label: "Item", disabled: false },
-  ],
+  options: options,
   required: false,
   size: "wide",
   fullwidth: false,

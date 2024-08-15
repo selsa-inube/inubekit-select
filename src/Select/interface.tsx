@@ -1,32 +1,33 @@
 import { forwardRef } from "react";
+
 import {
   MdOutlineError,
-  MdAddCircle,
-  MdCheckCircle,
-  MdOutlineArrowDropDown,
+  MdOutlineCancel,
+  MdOutlineChevronRight,
 } from "react-icons/md";
 
 import { Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
 import { Label } from "@inubekit/label";
 import { Stack } from "@inubekit/stack";
-import { inube } from "@inubekit/foundations";
+
+import { OptionList } from "./OptionList";
+import { OptionItem } from "./OptionItem";
 
 import { ISelectSize } from "./props";
-import { OptionList } from "./OptionList";
-import { ISelect } from ".";
+import { IOption, ISelect } from ".";
+
 import {
   StyledContainer,
   StyledInputContainer,
   StyledInput,
-  StyledClearIcon,
+  StyledChevron,
 } from "./styles";
-import { OptionItem } from "./OptionItem";
 
 interface ISelectInterface extends ISelect {
   focused?: boolean;
   displayList: boolean;
-  onOptionClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onOptionClick: (value: string) => void;
   handleClear: () => void;
 }
 
@@ -37,35 +38,28 @@ const getTypo = (size: ISelectSize) => {
   return "large";
 };
 
-const Message = (
-  props: Pick<ISelect, "disabled" | "status"> & { message?: string },
-) => {
-  const { disabled, status, message } = props;
+function getOptionLabel(options: IOption[], value: string) {
+  const option = options.find((option) => option.value === value);
+  if (option) {
+    return option.label;
+  }
+  return "";
+}
 
-  return status !== "pending" ? (
+interface IMessage {
+  message: ISelect["message"];
+}
+
+const Message = (props: IMessage) => {
+  const { message } = props;
+
+  return (
     <Stack alignItems="center" gap="4px" margin="4px 0 0 16px">
-      <Icon
-        appearance={
-          status === "invalid"
-            ? ("danger" as keyof typeof inube.text)
-            : ("success" as keyof typeof inube.text)
-        }
-        disabled={disabled}
-        icon={status === "invalid" ? <MdOutlineError /> : <MdCheckCircle />}
-        size="14px"
-      />
-      <Text
-        type="body"
-        size="small"
-        appearance={status === "invalid" ? "danger" : "success"}
-        disabled={disabled}
-        textAlign="start"
-      >
-        {message && `${message}`}
+      <Icon appearance="danger" icon={<MdOutlineError />} size="14px" />
+      <Text type="body" size="small" appearance="danger" textAlign="start">
+        {message}
       </Text>
     </Stack>
-  ) : (
-    <></>
   );
 };
 
@@ -77,7 +71,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
     placeholder,
     disabled,
     required,
-    status,
+    invalid,
     message,
     size,
     value,
@@ -100,13 +94,13 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           alignItems="center"
           margin="0 0 4px 0"
           padding="0 0 0 16px"
-          gap="2px"
+          gap="4px"
         >
           <Label
             htmlFor={id!}
             disabled={disabled}
             focused={focused}
-            invalid={status === "invalid"}
+            invalid={invalid}
             size={getTypo(size!)}
             margin="0px 0px 0px 2px"
           >
@@ -123,56 +117,52 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
       <StyledInputContainer
         disabled={disabled}
         $focused={focused}
-        $status={status}
+        $invalid={invalid}
         onClick={onClick}
         $value={value}
         $size={size}
       >
         <StyledInput
           autoComplete="off"
-          readOnly
-          value={value}
+          value={getOptionLabel(options, value)}
           name={name}
           id={id}
           placeholder={placeholder}
           disabled={disabled}
-          $required={required}
+          required={required}
           $size={size}
-          $status={status}
           $fullwidth={fullwidth}
           $focused={focused}
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChange}
           onClick={onClick}
+          readOnly
         />
-        <Stack direction="row" gap="8px">
+        <Stack direction="row" gap="8px" alignItems="center">
           {value && !disabled && (
-            <StyledClearIcon>
-              <Icon
-                appearance="gray"
-                icon={<MdAddCircle />}
-                size="20px"
-                onClick={handleClear}
-              />
-            </StyledClearIcon>
+            <Icon
+              appearance="gray"
+              icon={<MdOutlineCancel />}
+              size="16px"
+              onClick={handleClear}
+            />
           )}
 
-          <Icon
-            appearance="dark"
-            icon={<MdOutlineArrowDropDown />}
-            size="24px"
-            spacing="narrow"
-            disabled={disabled}
-          />
+          <StyledChevron $displayList={displayList}>
+            <Icon
+              appearance="dark"
+              icon={<MdOutlineChevronRight />}
+              spacing="narrow"
+              disabled={disabled}
+            />
+          </StyledChevron>
         </Stack>
       </StyledInputContainer>
 
-      {status && (
-        <Message disabled={disabled} status={status} message={message} />
-      )}
+      {invalid && <Message message={message} />}
       {displayList && !disabled && (
-        <OptionList onClick={onOptionClick!}>
+        <OptionList onOptionClick={onOptionClick} options={options}>
           {options.map((optionItem) => (
             <OptionItem
               key={optionItem.id}

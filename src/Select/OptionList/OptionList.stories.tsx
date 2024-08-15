@@ -18,7 +18,7 @@ const options = [
 
 const Default = (args: IOptionList) => (
   <div style={{ position: "relative" }}>
-    <OptionList {...args} onClick={action("onClick")}>
+    <OptionList {...args} onOptionClick={action("onClick")}>
       {options.map((optionItem) => (
         <OptionItem
           key={optionItem.id}

@@ -1,26 +1,31 @@
 import { useState, useRef, useEffect } from "react";
 
-import { IOptionItem } from "./OptionItem";
-import { ISelectSize, ISelectStatus } from "./props";
+import { ISelectSize } from "./props";
 import { SelectUI } from "./interface";
 
 interface ISelect {
   label?: string;
-  name?: string;
+  name: string;
   id?: string;
   placeholder?: string;
   disabled?: boolean;
-  value?: string | number;
+  value: string;
   required?: boolean;
-  status?: ISelectStatus;
+  invalid?: boolean;
   message?: string;
   size?: ISelectSize;
   fullwidth?: boolean;
-  options: IOptionItem[];
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, name: string) => void;
+  options: IOption[];
+  onChange: (name: string, value: string) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
   onClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+interface IOption {
+  id: string;
+  label: string;
+  value: string;
 }
 
 const Select = (props: ISelect) => {
@@ -32,7 +37,7 @@ const Select = (props: ISelect) => {
     disabled = false,
     value,
     required = false,
-    status = "pending",
+    invalid = false,
     message,
     size = "wide",
     fullwidth = false,
@@ -48,64 +53,53 @@ const Select = (props: ISelect) => {
 
   const selectRef = useRef<{ contains: (e: EventTarget) => EventTarget }>(null);
 
-  const handleFocus = (e: FocusEvent) => {
-    setFocused(true);
+  function handleFocusAndBlur(event: FocusEvent) {
     try {
-      onFocus && onFocus(e);
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error("An unknown error occurred");
+      if (event.type === "focus") {
+        setFocused(true);
+        onFocus && onFocus(event);
       }
-    }
-  };
 
-  const handleBlur = (e: FocusEvent) => {
-    setFocused(false);
-    try {
-      onBlur && onBlur(e);
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error("An unknown error occurred");
+      if (event.type === "blur") {
+        setFocused(false);
+        onBlur && onBlur(event);
       }
+    } catch (error) {
+      console.error(`Error executing focus/blur callback. ${error}`);
     }
-  };
+  }
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (selectRef.current && !selectRef.current.contains(event.target!)) {
+  function handleDocumentClick(event: MouseEvent) {
+    if (
+      selectRef.current &&
+      event.target &&
+      !selectRef.current.contains(event.target)
+    ) {
       setDisplayList(false);
     }
-  };
+  }
 
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-
+    document.addEventListener("click", handleDocumentClick);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("click", handleDocumentClick);
     };
-  }, [selectRef]);
+  }, []);
 
-  const onInsideClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleOptionClick(value: string) {
     setDisplayList(false);
     try {
-      onChange && onChange(e, name!);
+      onChange && onChange(name, value);
     } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error("An unknown error occurred");
-      }
+      console.error(`Error when changing value using callback. ${error}`);
     }
-  };
+  }
 
-  const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleClick(event: React.ChangeEvent<HTMLInputElement>) {
     setDisplayList(!displayList);
     if (disabled) return;
     try {
-      onClick && onClick(e);
+      onClick && onClick(event);
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);
@@ -113,17 +107,11 @@ const Select = (props: ISelect) => {
         throw new Error("An unknown error occurred");
       }
     }
-  };
+  }
 
-  const handleClear = () => {
-    const event = {
-      target: {
-        value: "",
-        innerText: "",
-      },
-    } as React.ChangeEvent<HTMLInputElement>;
-    onChange(event, name!);
-  };
+  function handleClear() {
+    onChange(name, "");
+  }
 
   return (
     <SelectUI
@@ -136,21 +124,21 @@ const Select = (props: ISelect) => {
       value={value}
       required={required}
       size={size}
-      status={status}
+      invalid={invalid}
       message={message}
       fullwidth={fullwidth}
       focused={focused}
       options={options}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
+      onFocus={handleFocusAndBlur}
+      onBlur={handleFocusAndBlur}
       onChange={onChange}
       onClick={handleClick}
       displayList={displayList}
-      onOptionClick={onInsideClick}
+      onOptionClick={handleOptionClick}
       handleClear={handleClear}
     />
   );
 };
 
 export { Select };
-export type { ISelect };
+export type { ISelect, IOption };

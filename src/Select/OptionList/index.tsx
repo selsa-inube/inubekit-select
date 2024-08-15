@@ -1,22 +1,27 @@
+import { IOption } from "..";
 import { StyledOptionList } from "./styles";
 
 interface IOptionList {
   children: JSX.Element[];
-  onClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onOptionClick: (value: string) => void;
+  options: IOption[];
 }
 
 const OptionList = (props: IOptionList) => {
-  const { children, onClick } = props;
+  const { children, onOptionClick, options } = props;
 
-  const interceptOnClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const interceptOnClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
-      onClick && onClick(e);
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error("An unknown error occurred");
+      const optionClicked = options.find(
+        (option) =>
+          option.id === event.target.id ||
+          option.id === event.target.parentElement?.id,
+      );
+      if (optionClicked) {
+        onOptionClick && onOptionClick(optionClicked.value);
       }
+    } catch (error) {
+      console.error(`Error trying to process onOptionClick. ${error}`);
     }
   };
 

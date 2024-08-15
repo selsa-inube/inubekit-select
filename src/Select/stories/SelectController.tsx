@@ -2,28 +2,26 @@ import { useState } from "react";
 import { Select, ISelect } from "..";
 
 const SelectController = (props: ISelect) => {
-  const { value, status = "pending", name } = props;
-  const [form, setForm] = useState({ value, status, name });
+  const { name, value, options } = props;
+  const [form, setForm] = useState({ [name]: value });
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
-    const value = e.target.innerText;
-    setForm({ value, status: "pending", name });
+  const onChange = (name: string, newValue: string) => {
+    setForm({ ...form, [name]: newValue });
   };
 
-  const onFocus = () => {
-    if (!value) {
-      setForm({ ...form, status: "pending" });
-    }
-  };
+  // const onFocus = () => {
+  //   if (!selected.value) {
+  //     setForm({ ...form });
+  //   }
+  // };
 
   return (
     <Select
       {...props}
-      value={form.value}
-      status={form.status}
+      name={name}
+      value={form[name]}
+      options={options}
       onChange={onChange}
-      onFocus={onFocus}
-      name={form.name}
     />
   );
 };
