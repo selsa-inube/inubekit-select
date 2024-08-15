@@ -1,9 +1,6 @@
 const sizes = ["wide", "compact"] as const;
 type ISelectSize = (typeof sizes)[number];
 
-const status = ["valid", "invalid", "pending"] as const;
-type ISelectStatus = (typeof status)[number];
-
 const parameters = {
   docs: {
     description: {
@@ -38,7 +35,8 @@ const props = {
     },
   },
   value: {
-    description: "component initial value",
+    description:
+      "string value that should be controlled by the controlling parent.",
   },
   onChange: {
     description:
@@ -50,19 +48,14 @@ const props = {
       defaultValue: { summary: false },
     },
   },
-  status: {
-    options: status,
-    control: { type: "select" },
-    description: "status of the component",
+  invalid: {
+    description: "defines if the field is required or not",
     table: {
-      defaultValue: { summary: "pending" },
+      defaultValue: { summary: false },
     },
   },
-  errorMessage: {
+  invalidMessage: {
     description: "show when the field is validated and there is an error",
-  },
-  validMessage: {
-    description: "show when the field is validated without errors",
   },
   size: {
     options: sizes,
@@ -89,5 +82,5 @@ const props = {
   },
 };
 
-export { parameters, props, status, sizes };
-export type { ISelectSize, ISelectStatus };
+export { parameters, props, sizes };
+export type { ISelectSize };
