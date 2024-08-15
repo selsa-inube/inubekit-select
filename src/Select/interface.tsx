@@ -1,8 +1,9 @@
 import { forwardRef } from "react";
+
 import {
   MdOutlineError,
-  MdOutlineArrowDropDown,
   MdOutlineCancel,
+  MdOutlineChevronRight,
 } from "react-icons/md";
 
 import { Text } from "@inubekit/text";
@@ -10,11 +11,18 @@ import { Icon } from "@inubekit/icon";
 import { Label } from "@inubekit/label";
 import { Stack } from "@inubekit/stack";
 
-import { ISelectSize } from "./props";
 import { OptionList } from "./OptionList";
-import { IOption, ISelect } from ".";
-import { StyledContainer, StyledInputContainer, StyledInput } from "./styles";
 import { OptionItem } from "./OptionItem";
+
+import { ISelectSize } from "./props";
+import { IOption, ISelect } from ".";
+
+import {
+  StyledContainer,
+  StyledInputContainer,
+  StyledInput,
+  StyledChevron,
+} from "./styles";
 
 interface ISelectInterface extends ISelect {
   focused?: boolean;
@@ -141,13 +149,14 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
             />
           )}
 
-          <Icon
-            appearance="dark"
-            icon={<MdOutlineArrowDropDown />}
-            size="24px"
-            spacing="narrow"
-            disabled={disabled}
-          />
+          <StyledChevron $displayList={displayList}>
+            <Icon
+              appearance="dark"
+              icon={<MdOutlineChevronRight />}
+              spacing="narrow"
+              disabled={disabled}
+            />
+          </StyledChevron>
         </Stack>
       </StyledInputContainer>
 

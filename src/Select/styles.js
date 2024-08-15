@@ -110,4 +110,12 @@ const StyledInput = styled.input`
   }
 `;
 
-export { StyledContainer, StyledInputContainer, StyledInput };
+const StyledChevron = styled.div`
+  display: flex;
+  transition: ease;
+  transition-duration: 500ms;
+  transform: ${({ $displayList }) =>
+    $displayList ? "rotate(-90deg)" : "rotate(90deg)"};
+`;
+
+export { StyledContainer, StyledInputContainer, StyledInput, StyledChevron };
