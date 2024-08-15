@@ -1,3 +1,15 @@
+# v6.0.0 (Thu Aug 15 2024)
+
+#### 💥 Breaking Change
+
+- Fcanas/refactor value prop on change [#28](https://github.com/selsa-inube/inubekit-select/pull/28) ([@wfercanas](https://github.com/wfercanas))
+
+#### Authors: 1
+
+- Fernando Cañas ([@wfercanas](https://github.com/wfercanas))
+
+---
+
 # v5.10.1 (Mon Aug 12 2024)
 
 #### 🐛 Bug Fix
