@@ -101,11 +101,7 @@ const Select = (props: ISelect) => {
     try {
       onClick && onClick(event);
     } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error("An unknown error occurred");
-      }
+      console.error(`Error when clicking over select. ${error}`);
     }
   }
 

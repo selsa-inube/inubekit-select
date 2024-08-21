@@ -9,12 +9,6 @@ const SelectController = (props: ISelect) => {
     setForm({ ...form, [name]: newValue });
   };
 
-  // const onFocus = () => {
-  //   if (!selected.value) {
-  //     setForm({ ...form });
-  //   }
-  // };
-
   return (
     <Select
       {...props}

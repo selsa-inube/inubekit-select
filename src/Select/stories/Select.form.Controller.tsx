@@ -17,6 +17,9 @@ interface IFormState {
 }
 
 function checkRequired(field: IField) {
+  if (!field.required) {
+    return;
+  }
   if (field.required && Boolean(field.value)) {
     return;
   }
