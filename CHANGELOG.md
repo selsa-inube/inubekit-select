@@ -1,3 +1,15 @@
+# v6.9.0 (Wed Aug 21 2024)
+
+#### 🚀 Enhancement
+
+- Update OptionItem to Change Background Color on Hover [#40](https://github.com/selsa-inube/inubekit-select/pull/40) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.8.0 (Wed Aug 21 2024)
 
 #### 🚀 Enhancement
