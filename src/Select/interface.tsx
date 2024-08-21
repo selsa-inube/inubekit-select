@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useContext } from "react";
 
 import {
   MdOutlineError,
@@ -6,7 +6,7 @@ import {
   MdOutlineChevronRight,
 } from "react-icons/md";
 
-import { Text } from "@inubekit/text";
+import { ITextAppearance, Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
 import { Label } from "@inubekit/label";
 import { Stack } from "@inubekit/stack";
@@ -23,6 +23,8 @@ import {
   StyledInput,
   StyledChevron,
 } from "./styles";
+import { ThemeContext } from "styled-components";
+import { inube } from "@inubekit/foundations";
 
 interface ISelectInterface extends ISelect {
   focused?: boolean;
@@ -52,11 +54,23 @@ interface IMessage {
 
 const Message = (props: IMessage) => {
   const { message } = props;
-
+  const theme: typeof inube = useContext(ThemeContext);
+  const messageAppearance =
+    (theme?.input?.message?.appearance as ITextAppearance) ||
+    inube.input.message.appearance;
   return (
     <Stack alignItems="center" gap="4px" margin="4px 0 0 16px">
-      <Icon appearance="danger" icon={<MdOutlineError />} size="14px" />
-      <Text type="body" size="small" appearance="danger" textAlign="start">
+      <Icon
+        appearance={messageAppearance}
+        icon={<MdOutlineError />}
+        size="14px"
+      />
+      <Text
+        type="body"
+        size="small"
+        appearance={messageAppearance}
+        textAlign="start"
+      >
         {message}
       </Text>
     </Stack>
@@ -87,6 +101,11 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
     handleClear,
   } = props;
 
+  const theme: typeof inube = useContext(ThemeContext);
+  const requiredAppearance =
+    (theme?.input?.required?.appearance as ITextAppearance) ||
+    inube.input.required.appearance;
+
   return (
     <StyledContainer $fullwidth={fullwidth} disabled={disabled} ref={ref}>
       {label && (
@@ -108,7 +127,12 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           </Label>
 
           {required && !disabled && (
-            <Text type="body" size="small" appearance="dark" textAlign="start">
+            <Text
+              type="body"
+              size="small"
+              appearance={requiredAppearance}
+              textAlign="start"
+            >
               (Requerido)
             </Text>
           )}
