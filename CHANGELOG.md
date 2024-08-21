@@ -1,3 +1,15 @@
+# v6.3.0 (Wed Aug 21 2024)
+
+#### 🚀 Enhancement
+
+- Refactor onClick Handler to Prevent Error Throwing [#32](https://github.com/selsa-inube/inubekit-select/pull/32) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.2.0 (Tue Aug 20 2024)
 
 #### 🚀 Enhancement
