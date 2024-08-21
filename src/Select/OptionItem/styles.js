@@ -13,28 +13,11 @@ const StyledOptionItem = styled.li`
 
   border-left-width: 4px;
   border-left-style: solid;
-  border-left-color: ${({ theme }) =>
-    theme?.input?.border?.color?.regular || inube.input.border.color.regular};
-
-  & > p {
-    color: ${({ theme }) =>
-      theme?.input?.content?.color?.regular ||
-      inube.input.content.color.regular};
-  }
 
   &:hover {
-    border-left-color: ${({ theme }) =>
-      theme?.input?.border?.color?.focus || inube.input.border.color.focus};
-
     background-color: ${({ theme }) =>
       theme?.input?.background?.color?.regular ||
       inube.input.background.color.regular};
-
-    & > p {
-      color: ${({ theme }) =>
-        theme?.input?.content?.color?.regular ||
-        inube.input.content.color.regular};
-    }
   }
 `;
 
