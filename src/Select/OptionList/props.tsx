@@ -1,30 +1,32 @@
 const parameters = {
   docs: {
     description: {
-      component: "container of the options to be used in component Select",
+      component:
+        "The OptionList container is used within the Select component to display a list of options. It manages the visibility of the options and handles user interactions such as selecting an option or closing the dropdown.",
     },
   },
 };
 
 const props = {
-  options: {
+  handleSelect: {
     description:
-      "(array): shall be designed to accept an array of objects with a predetermined structure.",
+      "A callback function triggered when an option is selected. It determines the behavior after the user chooses an option, typically sending the selected option's value back to the parent component for further processing.",
+  },
+  isOpenOptions: {
+    description:
+      "A boolean that controls the visibility of the option list. When set to `true`, the options are displayed in the dropdown. When `false`, the options are hidden, usually because the dropdown has been closed.",
   },
   onClick: {
     description:
-      "(function): shall be determine the behavior of the click event and is not required.",
-  },
-  isOpenOptions: {
-    description: "(boolean): shall determine the state of the options.",
+      "An optional callback function that handles the click event on the OptionList. It defines the custom behavior that should occur when the user interacts with the option list, and it is not mandatory to provide this function.",
   },
   onCloseOptions: {
     description:
-      "(function):will determine the behaviour of the click event when one of the options is selected.",
+      "A callback function that is triggered when an option is selected, and the dropdown needs to be closed. It defines what should happen when the user selects an option and the dropdown is expected to disappear.",
   },
-  handleSelect: {
+  options: {
     description:
-      "(function): shall determine the behaviour of the click event to send the value of the chosen options.",
+      "An array of objects that represent the options available within the OptionList. Each object in the array should have a predefined structure, including attributes like `id`, `label`, and `value`, to uniquely identify and display each option.",
   },
 };
 
