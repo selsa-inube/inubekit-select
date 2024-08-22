@@ -1,3 +1,15 @@
+# v6.10.0 (Thu Aug 22 2024)
+
+#### 🚀 Enhancement
+
+- Add `readOnly` Prop to Control Typing in Inner TextField [#41](https://github.com/selsa-inube/inubekit-select/pull/41) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.9.0 (Wed Aug 21 2024)
 
 #### 🚀 Enhancement
