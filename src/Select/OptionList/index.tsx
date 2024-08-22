@@ -5,10 +5,11 @@ interface IOptionList {
   children: JSX.Element[];
   onOptionClick: (value: string) => void;
   options: IOption[];
+  maxItems?: number;
 }
 
 const OptionList = (props: IOptionList) => {
-  const { children, onOptionClick, options } = props;
+  const { children, onOptionClick, options, maxItems } = props;
 
   const interceptOnClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
@@ -26,7 +27,13 @@ const OptionList = (props: IOptionList) => {
   };
 
   return (
-    <StyledOptionList onClick={interceptOnClick}>{children}</StyledOptionList>
+    <StyledOptionList
+      maxItems={maxItems}
+      totalOptions={options.length}
+      onClick={interceptOnClick}
+    >
+      {children}
+    </StyledOptionList>
   );
 };
 

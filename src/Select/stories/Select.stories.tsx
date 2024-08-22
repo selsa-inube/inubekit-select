@@ -22,6 +22,12 @@ const options = [
   { id: "per", label: "Peru", value: "peru" },
 ];
 
+const manyOptions = Array.from({ length: 20 }, (_, i) => ({
+  id: `option-${i + 1}`,
+  label: `Option ${i + 1}`,
+  value: `option-${i + 1}`,
+}));
+
 const Default = (args: ISelect) => <SelectController {...args} />;
 
 Default.args = {
@@ -35,8 +41,25 @@ Default.args = {
   required: false,
   size: "wide",
   fullwidth: false,
+  readonly: false,
+};
+
+const WithManyOptions = (args: ISelect) => <SelectController {...args} />;
+
+WithManyOptions.args = {
+  label: "Many Options",
+  name: "manyOptions",
+  id: "manyOptionsId",
+  placeholder: "Select an option",
+  value: "",
+  disabled: false,
+  options: manyOptions,
+  required: false,
+  size: "wide",
+  fullwidth: false,
+  maxItems: 5,
+  readonly: false,
 };
 
 export default story;
-
-export { Default };
+export { Default, WithManyOptions };
