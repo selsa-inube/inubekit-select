@@ -1,36 +1,41 @@
 import { forwardRef, useContext } from "react";
 
 import {
-  MdOutlineError,
   MdOutlineCancel,
   MdOutlineChevronRight,
+  MdOutlineError,
 } from "react-icons/md";
 
-import { ITextAppearance, Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
 import { Label } from "@inubekit/label";
 import { Stack } from "@inubekit/stack";
+import { Text, ITextAppearance } from "@inubekit/text";
 
 import { OptionList } from "./OptionList";
 import { OptionItem } from "./OptionItem";
-
-import { ISelectSize } from "./props";
 import { IOption, ISelect } from ".";
-
+import { ISelectSize } from "./props";
 import {
   StyledContainer,
-  StyledInputContainer,
   StyledInput,
+  StyledInputContainer,
   StyledChevron,
 } from "./styles";
+
 import { ThemeContext } from "styled-components";
 import { inube } from "@inubekit/foundations";
 
+interface IMessage {
+  message: ISelect["message"];
+}
+
 interface ISelectInterface extends ISelect {
-  focused?: boolean;
   displayList: boolean;
-  onOptionClick: (value: string) => void;
+  focused?: boolean;
   handleClear: () => void;
+  maxItems: number;
+  onOptionClick: (value: string) => void;
+  readOnly: boolean;
 }
 
 const getTypo = (size: ISelectSize) => {
@@ -46,10 +51,6 @@ function getOptionLabel(options: IOption[], value: string) {
     return option.label;
   }
   return "";
-}
-
-interface IMessage {
-  message: ISelect["message"];
 }
 
 const Message = (props: IMessage) => {
@@ -79,26 +80,28 @@ const Message = (props: IMessage) => {
 
 const SelectUI = forwardRef((props: ISelectInterface, ref) => {
   const {
-    label,
-    name,
-    id,
-    placeholder,
+    displayList,
     disabled,
-    required,
+    focused,
+    fullwidth,
+    handleClear,
+    id,
     invalid,
+    label,
+    maxItems,
     message,
+    name,
+    onBlur,
+    onChange,
+    onClick,
+    onFocus,
+    onOptionClick,
+    options,
+    placeholder,
+    readOnly,
+    required,
     size,
     value,
-    fullwidth,
-    options,
-    focused,
-    onFocus,
-    onBlur,
-    onClick,
-    onChange,
-    onOptionClick,
-    displayList,
-    handleClear,
   } = props;
 
   const theme: typeof inube = useContext(ThemeContext);
@@ -161,7 +164,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           onBlur={onBlur}
           onChange={onChange}
           onClick={onClick}
-          readOnly
+          readOnly={readOnly}
         />
         <Stack direction="row" gap="8px" alignItems="center">
           {value && !disabled && (
@@ -186,7 +189,11 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
 
       {invalid && <Message message={message} />}
       {displayList && !disabled && (
-        <OptionList onOptionClick={onOptionClick} options={options}>
+        <OptionList
+          maxItems={maxItems}
+          onOptionClick={onOptionClick}
+          options={options}
+        >
           {options.map((optionItem) => (
             <OptionItem
               key={optionItem.id}

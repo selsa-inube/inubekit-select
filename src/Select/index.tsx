@@ -3,55 +3,83 @@ import { useState, useRef, useEffect } from "react";
 import { ISelectSize } from "./props";
 import { SelectUI } from "./interface";
 
-interface ISelect {
-  label?: string;
-  name: string;
-  id?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  value: string;
-  required?: boolean;
-  invalid?: boolean;
-  message?: string;
-  size?: ISelectSize;
-  fullwidth?: boolean;
-  options: IOption[];
-  onChange: (name: string, value: string) => void;
-  onFocus?: (event: FocusEvent) => void;
-  onBlur?: (event: FocusEvent) => void;
-  onClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
 interface IOption {
   id: string;
   label: string;
   value: string;
 }
 
+interface ISelect {
+  disabled?: boolean;
+  fullwidth?: boolean;
+  id?: string;
+  invalid?: boolean;
+  label?: string;
+  maxItems?: number;
+  message?: string;
+  name: string;
+  onBlur?: (event: FocusEvent) => void;
+  onChange: (name: string, value: string) => void;
+  onClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (event: FocusEvent) => void;
+  options: IOption[];
+  placeholder?: string;
+  readonly?: boolean;
+  required?: boolean;
+  size?: ISelectSize;
+  value: string;
+}
+
 const Select = (props: ISelect) => {
   const {
-    label,
-    name,
-    id,
-    placeholder,
     disabled = false,
-    value,
-    required = false,
-    invalid = false,
-    message,
-    size = "wide",
     fullwidth = false,
-    options,
+    id,
+    invalid = false,
+    label,
+    maxItems = 5,
+    message,
+    name,
     onBlur,
-    onFocus,
     onChange,
     onClick,
+    onFocus,
+    options,
+    placeholder,
+    readonly = true,
+    required = false,
+    size = "wide",
+    value,
   } = props;
 
-  const [focused, setFocused] = useState(false);
   const [displayList, setDisplayList] = useState(false);
+  const [focused, setFocused] = useState(false);
 
   const selectRef = useRef<{ contains: (e: EventTarget) => EventTarget }>(null);
+
+  function handleClear() {
+    onChange(name, "");
+  }
+
+  function handleClick(event: React.ChangeEvent<HTMLInputElement>) {
+    setDisplayList(!displayList);
+    if (disabled) return;
+    try {
+      onClick && onClick(event);
+    } catch (error) {
+      console.error(`Error when clicking over select. ${error}`);
+    }
+  }
+
+  function handleDocumentClick(event: MouseEvent) {
+    if (
+      selectRef.current &&
+      event.target &&
+      !selectRef.current.contains(event.target)
+    ) {
+      setDisplayList(false);
+    }
+  }
 
   function handleFocusAndBlur(event: FocusEvent) {
     try {
@@ -69,13 +97,12 @@ const Select = (props: ISelect) => {
     }
   }
 
-  function handleDocumentClick(event: MouseEvent) {
-    if (
-      selectRef.current &&
-      event.target &&
-      !selectRef.current.contains(event.target)
-    ) {
-      setDisplayList(false);
+  function handleOptionClick(value: string) {
+    setDisplayList(false);
+    try {
+      onChange && onChange(name, value);
+    } catch (error) {
+      console.error(`Error when changing value using callback. ${error}`);
     }
   }
 
@@ -86,52 +113,31 @@ const Select = (props: ISelect) => {
     };
   }, []);
 
-  function handleOptionClick(value: string) {
-    setDisplayList(false);
-    try {
-      onChange && onChange(name, value);
-    } catch (error) {
-      console.error(`Error when changing value using callback. ${error}`);
-    }
-  }
-
-  function handleClick(event: React.ChangeEvent<HTMLInputElement>) {
-    setDisplayList(!displayList);
-    if (disabled) return;
-    try {
-      onClick && onClick(event);
-    } catch (error) {
-      console.error(`Error when clicking over select. ${error}`);
-    }
-  }
-
-  function handleClear() {
-    onChange(name, "");
-  }
-
   return (
     <SelectUI
       ref={selectRef}
-      label={label}
-      name={name}
-      id={id}
-      placeholder={placeholder}
       disabled={disabled}
-      value={value}
-      required={required}
-      size={size}
-      invalid={invalid}
-      message={message}
-      fullwidth={fullwidth}
+      displayList={displayList}
       focused={focused}
-      options={options}
-      onFocus={handleFocusAndBlur}
+      fullwidth={fullwidth}
+      handleClear={handleClear}
+      id={id}
+      invalid={invalid}
+      label={label}
+      maxItems={maxItems}
+      message={message}
+      name={name}
       onBlur={handleFocusAndBlur}
       onChange={onChange}
       onClick={handleClick}
-      displayList={displayList}
+      onFocus={handleFocusAndBlur}
       onOptionClick={handleOptionClick}
-      handleClear={handleClear}
+      options={options}
+      placeholder={placeholder}
+      required={required}
+      size={size}
+      value={value}
+      readOnly={readonly}
     />
   );
 };

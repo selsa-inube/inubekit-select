@@ -19,6 +19,36 @@ const StyledOptionList = styled.ul`
   box-shadow:
     0px 1px 2px rgba(0, 0, 0, 0.3),
     0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+
+  max-height: ${({ maxItems }) => (maxItems ? `${maxItems * 46}px` : "auto")};
+  overflow-y: ${({ maxItems, totalOptions }) =>
+    maxItems && totalOptions > maxItems ? "auto" : "hidden"};
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &:hover::-webkit-scrollbar,
+  &:hover::-webkit-scrollbar-thumb {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   & > li:hover {
     background: ${({ theme }) => {
       return (
