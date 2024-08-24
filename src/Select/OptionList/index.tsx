@@ -28,8 +28,8 @@ const OptionList = (props: IOptionList) => {
 
   return (
     <StyledOptionList
-      maxItems={maxItems}
-      totalOptions={options.length}
+      $maxItems={maxItems}
+      $totalOptions={options.length}
       onClick={interceptOnClick}
     >
       {children}
