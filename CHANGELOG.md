@@ -1,3 +1,15 @@
+# v6.12.0 (Sat Aug 24 2024)
+
+#### 🚀 Enhancement
+
+- Update `<Select />` to Prevent Errors Related to DOM and Props [#44](https://github.com/selsa-inube/inubekit-select/pull/44) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.11.1 (Fri Aug 23 2024)
 
 #### ⚠️ Pushed to `main`
