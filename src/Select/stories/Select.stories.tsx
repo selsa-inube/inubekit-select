@@ -41,6 +41,8 @@ Default.args = {
   required: false,
   size: "wide",
   fullwidth: false,
+  readonly: true,
+  showOptions: false,
 };
 
 const WithManyOptions = (args: ISelect) => <SelectController {...args} />;
