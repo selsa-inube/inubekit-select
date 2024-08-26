@@ -1,3 +1,15 @@
+# v6.12.1 (Mon Aug 26 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: remove unnecessary prop fom story ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.12.0 (Sat Aug 24 2024)
 
 #### 🚀 Enhancement
