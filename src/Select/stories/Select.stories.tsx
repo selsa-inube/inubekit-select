@@ -41,7 +41,6 @@ Default.args = {
   required: false,
   size: "wide",
   fullwidth: false,
-  readonly: false,
 };
 
 const WithManyOptions = (args: ISelect) => <SelectController {...args} />;
@@ -58,7 +57,6 @@ WithManyOptions.args = {
   size: "wide",
   fullwidth: false,
   maxItems: 5,
-  readonly: false,
 };
 
 export default story;
