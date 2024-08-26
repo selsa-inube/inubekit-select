@@ -1,3 +1,15 @@
+# v6.13.0 (Mon Aug 26 2024)
+
+#### 🚀 Enhancement
+
+- Adjust behavior in order to allow write according to readonly [#45](https://github.com/selsa-inube/inubekit-select/pull/45) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.12.1 (Mon Aug 26 2024)
 
 #### ⚠️ Pushed to `main`
