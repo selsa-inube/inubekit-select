@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from "react";
-
+import { useState, useRef, useEffect, useCallback } from "react";
 import { ISelectSize } from "./props";
 import { SelectUI } from "./interface";
 
@@ -28,6 +27,7 @@ interface ISelect {
   required?: boolean;
   size?: ISelectSize;
   value: string;
+  showOptions?: boolean;
 }
 
 const Select = (props: ISelect) => {
@@ -50,6 +50,7 @@ const Select = (props: ISelect) => {
     required = false,
     size = "wide",
     value,
+    showOptions = false,
   } = props;
 
   const [displayList, setDisplayList] = useState(false);
@@ -62,8 +63,12 @@ const Select = (props: ISelect) => {
   }
 
   function handleClick(event: React.ChangeEvent<HTMLInputElement>) {
-    setDisplayList(!displayList);
     if (disabled) return;
+
+    if (readonly) {
+      setDisplayList(!displayList);
+    }
+
     try {
       onClick && onClick(event);
     } catch (error) {
@@ -71,15 +76,20 @@ const Select = (props: ISelect) => {
     }
   }
 
-  function handleDocumentClick(event: MouseEvent) {
-    if (
-      selectRef.current &&
-      event.target &&
-      !selectRef.current.contains(event.target)
-    ) {
-      setDisplayList(false);
-    }
-  }
+  const handleDocumentClick = useCallback(
+    (event: MouseEvent) => {
+      if (
+        selectRef.current &&
+        event.target &&
+        !selectRef.current.contains(event.target)
+      ) {
+        if (readonly) {
+          setDisplayList(false);
+        }
+      }
+    },
+    [readonly],
+  );
 
   function handleFocusAndBlur(event: FocusEvent) {
     try {
@@ -98,7 +108,9 @@ const Select = (props: ISelect) => {
   }
 
   function handleOptionClick(value: string) {
-    setDisplayList(false);
+    if (readonly) {
+      setDisplayList(false);
+    }
     try {
       onChange && onChange(name, value);
     } catch (error) {
@@ -111,13 +123,13 @@ const Select = (props: ISelect) => {
     return () => {
       document.removeEventListener("click", handleDocumentClick);
     };
-  }, []);
+  }, [handleDocumentClick]);
 
   return (
     <SelectUI
       ref={selectRef}
       disabled={disabled}
-      displayList={displayList}
+      displayList={readonly ? displayList : showOptions}
       focused={focused}
       fullwidth={fullwidth}
       handleClear={handleClear}

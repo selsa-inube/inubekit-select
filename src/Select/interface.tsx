@@ -50,7 +50,7 @@ function getOptionLabel(options: IOption[], value: string) {
   if (option) {
     return option.label;
   }
-  return "";
+  return value;
 }
 
 const Message = (props: IMessage) => {
