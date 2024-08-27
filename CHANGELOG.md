@@ -1,3 +1,15 @@
+# v6.14.0 (Tue Aug 27 2024)
+
+#### 🚀 Enhancement
+
+- Add Filtering Behavior Through Props [#46](https://github.com/selsa-inube/inubekit-select/pull/46) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.13.0 (Mon Aug 26 2024)
 
 #### 🚀 Enhancement
