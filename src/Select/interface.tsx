@@ -102,6 +102,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
     required,
     size,
     value,
+    onKeyUp,
   } = props;
 
   const theme: typeof inube = useContext(ThemeContext);
@@ -164,6 +165,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           onBlur={onBlur}
           onChange={onChange}
           onClick={onClick}
+          onKeyUp={onKeyUp}
           readOnly={readOnly}
         />
         <Stack direction="row" gap="8px" alignItems="center">

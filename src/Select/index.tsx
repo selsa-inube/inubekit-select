@@ -21,6 +21,7 @@ interface ISelect {
   onChange: (name: string, value: string) => void;
   onClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (event: FocusEvent) => void;
+  onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   options: IOption[];
   placeholder?: string;
   readonly?: boolean;
@@ -44,6 +45,7 @@ const Select = (props: ISelect) => {
     onChange,
     onClick,
     onFocus,
+    onKeyUp,
     options,
     placeholder,
     readonly = true,
@@ -113,11 +115,25 @@ const Select = (props: ISelect) => {
     }
     try {
       onChange && onChange(name, value);
+      console.log(name, value);
     } catch (error) {
       console.error(`Error when changing value using callback. ${error}`);
     }
   }
 
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Escape") {
+      setDisplayList(false);
+    }
+    if (readonly) {
+      setDisplayList(!displayList);
+    }
+    try {
+      onKeyUp && onKeyUp(event);
+    } catch (error) {
+      console.error(`Error when clicking over select. ${error}`);
+    }
+  }
   useEffect(() => {
     document.addEventListener("click", handleDocumentClick);
     return () => {
@@ -144,6 +160,7 @@ const Select = (props: ISelect) => {
       onClick={handleClick}
       onFocus={handleFocusAndBlur}
       onOptionClick={handleOptionClick}
+      onKeyUp={handleKeyDown}
       options={options}
       placeholder={placeholder}
       required={required}
