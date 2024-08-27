@@ -13,7 +13,7 @@ const OptionList = (props: IOptionList) => {
 
   const interceptOnClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
-      const optionClicked = options.find(
+      const optionClicked = options?.find(
         (option) =>
           option.id === event.target.id ||
           option.id === event.target.parentElement?.id,
@@ -29,7 +29,7 @@ const OptionList = (props: IOptionList) => {
   return (
     <StyledOptionList
       $maxItems={maxItems}
-      $totalOptions={options.length}
+      $totalOptions={options?.length}
       onClick={interceptOnClick}
     >
       {children}

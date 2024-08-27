@@ -11,9 +11,9 @@ const story = {
 };
 
 const options = [
-  { id: "1", label: "Item 1" },
-  { id: "2", label: "Item 2" },
-  { id: "3", label: "Item 3" },
+  { id: "1", label: "Item 1", value: "item-1" },
+  { id: "2", label: "Item 2", value: "item-2" },
+  { id: "3", label: "Item 3", value: "item-3" },
 ];
 
 const Default = (args: IOptionList) => (
