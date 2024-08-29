@@ -115,7 +115,6 @@ const Select = (props: ISelect) => {
     }
     try {
       onChange && onChange(name, value);
-      console.log(name, value);
     } catch (error) {
       console.error(`Error when changing value using callback. ${error}`);
     }
