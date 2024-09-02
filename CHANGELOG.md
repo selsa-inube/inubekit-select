@@ -1,3 +1,15 @@
+# v6.25.0 (Mon Sep 02 2024)
+
+#### 🚀 Enhancement
+
+- Auto-merge PR [#60](https://github.com/selsa-inube/inubekit-select/pull/60) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.24.0 (Mon Sep 02 2024)
 
 #### 🚀 Enhancement
