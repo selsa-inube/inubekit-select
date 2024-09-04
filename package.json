@@ -42,7 +42,7 @@
   "dependencies": {
     "@inubekit/button": "^4.5.0",
     "@inubekit/foundations": "^5.11.2",
-    "@inubekit/icon": "^2.15.0",
+    "@inubekit/icon": "^2.15.1",
     "@inubekit/label": "^2.7.0",
     "@inubekit/stack": "^3.7.0",
     "@inubekit/text": "^2.15.0"
