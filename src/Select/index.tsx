@@ -29,6 +29,7 @@ interface ISelect {
   size?: ISelectSize;
   value: string;
   showOptions?: boolean;
+  picker?: boolean;
 }
 
 const Select = (props: ISelect) => {
@@ -53,15 +54,18 @@ const Select = (props: ISelect) => {
     size = "wide",
     value,
     showOptions = false,
+    picker = false,
   } = props;
 
   const [displayList, setDisplayList] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
   const selectRef = useRef<{ contains: (e: EventTarget) => EventTarget }>(null);
 
   function handleClear() {
     onChange(name, "");
+    setCheckedItems([]);
   }
 
   function handleClick(event: React.ChangeEvent<HTMLInputElement>) {
@@ -133,6 +137,16 @@ const Select = (props: ISelect) => {
       console.error(`Error when clicking over select. ${error}`);
     }
   }
+
+  function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const { value, checked } = event.target;
+    setCheckedItems((prevChecked) =>
+      checked
+        ? [...prevChecked, value]
+        : prevChecked.filter((item) => item !== value),
+    );
+  }
+
   useEffect(() => {
     document.addEventListener("click", handleDocumentClick);
     return () => {
@@ -166,6 +180,9 @@ const Select = (props: ISelect) => {
       size={size}
       value={value}
       readOnly={readonly}
+      picker={picker}
+      checkedItems={checkedItems}
+      onCheckboxChange={handleCheckboxChange}
     />
   );
 };

@@ -36,6 +36,8 @@ interface ISelectInterface extends ISelect {
   maxItems: number;
   onOptionClick: (value: string) => void;
   readOnly: boolean;
+  checkedItems: string[];
+  onCheckboxChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const getTypo = (size: ISelectSize) => {
@@ -103,12 +105,22 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
     size,
     value,
     onKeyUp,
+    picker,
+    checkedItems,
+    onCheckboxChange,
   } = props;
 
   const theme: typeof inube = useContext(ThemeContext);
   const requiredAppearance =
     (theme?.input?.required?.appearance as ITextAppearance) ||
     inube.input.required.appearance;
+
+  const displayValue = picker
+    ? options
+        .filter((option) => checkedItems.includes(option.id))
+        .map((option) => option.label)
+        .join(", ")
+    : getOptionLabel(options, value);
 
   return (
     <StyledContainer $fullwidth={fullwidth} disabled={disabled} ref={ref}>
@@ -152,7 +164,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
       >
         <StyledInput
           autoComplete="off"
-          value={getOptionLabel(options, value)}
+          value={displayValue}
           name={name}
           id={id}
           placeholder={placeholder}
@@ -169,7 +181,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
           readOnly={readOnly}
         />
         <Stack direction="row" gap="8px" alignItems="center">
-          {value && !disabled && (
+          {(value || (picker && checkedItems.length > 0)) && !disabled && (
             <Icon
               appearance="gray"
               icon={<MdOutlineCancel />}
@@ -201,6 +213,9 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
               key={optionItem.id}
               id={optionItem.id}
               label={optionItem.label}
+              checked={checkedItems.includes(optionItem.id)}
+              onCheckboxChange={onCheckboxChange}
+              picker={picker}
             />
           ))}
         </OptionList>
