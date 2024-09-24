@@ -1,3 +1,15 @@
+# v6.27.1 (Tue Sep 24 2024)
+
+#### ⚠️ Pushed to `main`
+
+- feat: extend component in order to support picker ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.27.0 (Mon Sep 23 2024)
 
 #### 🚀 Enhancement
