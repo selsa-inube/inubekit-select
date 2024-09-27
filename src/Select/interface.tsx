@@ -133,7 +133,6 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
         >
           <Label
             htmlFor={id!}
-            disabled={disabled}
             focused={focused}
             invalid={invalid}
             size={getTypo(size!)}
