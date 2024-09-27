@@ -1,3 +1,15 @@
+# v6.31.0 (Fri Sep 27 2024)
+
+#### 🚀 Enhancement
+
+- Update Icon, Label, and Text dependencies to improve disabled readability [#66](https://github.com/selsa-inube/inubekit-select/pull/66) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.30.0 (Fri Sep 27 2024)
 
 #### 🚀 Enhancement
