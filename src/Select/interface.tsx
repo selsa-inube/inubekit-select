@@ -137,6 +137,7 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
             invalid={invalid}
             size={getTypo(size!)}
             margin="0px 0px 0px 2px"
+            disabled={disabled}
           >
             {label}
           </Label>
