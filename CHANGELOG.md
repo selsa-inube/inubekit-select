@@ -1,3 +1,19 @@
+# v6.32.0 (Tue Oct 01 2024)
+
+#### 🚀 Enhancement
+
+- Auto-merge PR [#67](https://github.com/selsa-inube/inubekit-select/pull/67) ([@cmarin001](https://github.com/cmarin001))
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjust tokens according to new directive ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v6.31.1 (Mon Sep 30 2024)
 
 #### ⚠️ Pushed to `main`
