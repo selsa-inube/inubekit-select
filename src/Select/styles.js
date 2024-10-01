@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { inube } from "@inubekit/foundations";
+import { InputTokens } from "@inubekit/input";
 
 const StyledContainer = styled.div`
   position: relative;
@@ -28,22 +29,22 @@ const StyledInputContainer = styled.div`
     if (disabled) {
       return (
         (theme?.input?.border?.color?.disabled ||
-          inube.input.border.color.disabled) +
+          InputTokens.border.color.disabled) +
         "; pointer-events: none; opacity: 0.5;"
       );
     }
     if ($focused) {
       return (
-        theme?.input?.border?.color?.focus || inube.input.border.color.focus
+        theme?.input?.border?.color?.focus || InputTokens.border.color.focus
       );
     }
     if ($invalid) {
       return (
-        theme?.input?.border?.color?.invalid || inube.input.border.color.invalid
+        theme?.input?.border?.color?.invalid || InputTokens.border.color.invalid
       );
     }
     return (
-      theme?.input?.border?.color?.regular || inube.input.border.color.regular
+      theme?.input?.border?.color?.regular || InputTokens.border.color.regular
     );
   }};
 
@@ -74,22 +75,22 @@ const StyledInput = styled.input`
     if (disabled) {
       return (
         theme?.input?.content?.color?.disabled ||
-        inube.input.content.color.disabled
+        InputTokens.content.color.disabled
       );
     }
     return (
-      theme?.input?.content?.color?.regular || inube.input.content.color.regular
+      theme?.input?.content?.color?.regular || InputTokens.content.color.regular
     );
   }};
   background-color: ${({ theme }) =>
     theme?.input?.background?.color?.regular ||
-    inube.input.background.color.regular};
+    InputTokens.background.color.regular};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 
   ::placeholder {
     color: ${({ theme }) =>
       theme?.input?.placeholder?.color?.regular ||
-      inube.input.placeholder.color.regular};
+      InputTokens.placeholder.color.regular};
   }
 
   &:focus {

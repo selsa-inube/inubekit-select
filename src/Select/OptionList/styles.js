@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { inube } from "@inubekit/foundations";
+import { InputTokens } from "@inubekit/input";
 
 const StyledOptionList = styled.ul`
   display: flex;
@@ -13,7 +13,7 @@ const StyledOptionList = styled.ul`
   background: ${({ theme }) => {
     return (
       theme?.input?.option?.background?.regular ||
-      inube.input.option.background.regular
+      InputTokens.option.background.regular
     );
   }};
   box-shadow:
@@ -54,7 +54,7 @@ const StyledOptionList = styled.ul`
     background: ${({ theme }) => {
       return (
         theme?.input?.option?.background?.hover ||
-        inube.input.option.background.hover
+        InputTokens.option.background.hover
       );
     }};
   }

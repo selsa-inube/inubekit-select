@@ -23,7 +23,7 @@ import {
 } from "./styles";
 
 import { ThemeContext } from "styled-components";
-import { inube } from "@inubekit/foundations";
+import { InputTokens } from "@inubekit/input";
 
 interface IMessage {
   message: ISelect["message"];
@@ -57,10 +57,11 @@ function getOptionLabel(options: IOption[], value: string) {
 
 const Message = (props: IMessage) => {
   const { message } = props;
-  const theme: typeof inube = useContext(ThemeContext);
+  const theme = useContext(ThemeContext) as { input: typeof InputTokens };
   const messageAppearance =
     (theme?.input?.message?.appearance as ITextAppearance) ||
-    inube.input.message.appearance;
+    InputTokens.message.appearance;
+
   return (
     <Stack alignItems="center" gap="4px" margin="4px 0 0 16px">
       <Icon
@@ -110,10 +111,10 @@ const SelectUI = forwardRef((props: ISelectInterface, ref) => {
     onCheckboxChange,
   } = props;
 
-  const theme: typeof inube = useContext(ThemeContext);
+  const theme = useContext(ThemeContext) as { input: typeof InputTokens };
   const requiredAppearance =
     (theme?.input?.required?.appearance as ITextAppearance) ||
-    inube.input.required.appearance;
+    InputTokens.required.appearance;
 
   const displayValue = picker
     ? options

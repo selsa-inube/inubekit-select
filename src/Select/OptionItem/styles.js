@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-import { inube } from "@inubekit/foundations";
+import { InputTokens } from "@inubekit/input";
 
 const StyledOptionItem = styled.li`
   display: flex;
@@ -17,7 +16,7 @@ const StyledOptionItem = styled.li`
   &:hover {
     background-color: ${({ theme }) =>
       theme?.input?.background?.color?.regular ||
-      inube.input.background.color.regular};
+      InputTokens.background.color.regular};
   }
 `;
 
